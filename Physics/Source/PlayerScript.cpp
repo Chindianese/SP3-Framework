@@ -53,7 +53,7 @@ void PlayerScript::Update(double dt)
 	{
 		trans->Translate(-fSpeed * m_vCameraUp);
 	}
-	if (KeyboardManager::GetInstance()->GetKeyTriggered("Susu"))
+	if (KeyboardManager::GetInstance()->GetKeyTriggered("Suswu"))
 	{
 		//AudioManager::GetInstance()->Play3D("susu.wav", Vector3(0, 0, 2));
 		SceneManager::GetInstance()->GetScene()->GetCameraGameObject()->GetComponent<CameraComponent>()->SetCameraType(CameraComponent::CAM_ORTHO);

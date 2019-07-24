@@ -15,7 +15,9 @@ private:
 	float m_fLastX;
 	float m_fLastY;
 	bool m_bIsFirstMouseMove;
-	float m_fCamSpeed;
+	Vector3 m_fCamSpeed;
+	float m_fMaxCamSpeed;
+	float m_fMinCamForce;
 
 	float m_fPitch;
 	float m_fYaw;
@@ -25,6 +27,9 @@ private:
 
 	Vector3 m_fOrthoSize;
 	bool m_bOrthoInit;
+
+	float m_fMass;
+	float m_fFriction;
 
 	void UpdateView(double dt, Vector3 vPos, bool mouseEnabled);
 public:

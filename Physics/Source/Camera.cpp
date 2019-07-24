@@ -5,7 +5,9 @@
 Camera::Camera()
 {
 	Reset();
-	m_fCamSpeed = 12.0f;
+	m_fCamSpeed.SetZero();
+	m_fMaxCamSpeed = 1000.0f;
+	m_fMinCamForce = 2.0f;
 	m_fPitch = 0;
 	m_fYaw = 270;
 	m_bIsFirstMouseMove = true;
@@ -13,6 +15,9 @@ Camera::Camera()
 	m_fXOffset = 0;
 	m_fYOffset = 0;
 	m_bOrthoInit = false;
+
+	m_fMass = 0.03f;
+	m_fFriction = .85f;
 }
 
 Camera::~Camera()
@@ -46,11 +51,48 @@ void Camera::UpdateView(double dt, Vector3 vPos, bool mouseEnabled)
 {
 	if (mouseEnabled)
 	{
-		m_fXOffset *= this->m_fCamSpeed * (float)dt;
-		m_fYOffset *= this->m_fCamSpeed * (float)dt;
+		// f = ma
+		if (m_fXOffset < 0)
+		{
+			if (m_fXOffset > -m_fMinCamForce)
+				m_fXOffset = -m_fMinCamForce;
+		}
+		if (m_fXOffset > 0)
+		{
+			if (m_fXOffset < -m_fMinCamForce)
+				m_fXOffset = m_fMinCamForce;
+		}
+		if (fYAccel < 0)
+		{
+			if (fYAccel > -m_fMinCamForce)
+				fYAccel = -m_fMinCamForce;
+		}
+		if (fYAccel > 0)
+		{
+			if (fYAccel < -m_fMinCamForce)
+				fYAccel = m_fMinCamForce;
+		}
+		float fXAccel = m_fXOffset / m_fMass;
+		float fYAccel = m_fYOffset / m_fMass;
+		//fXAccel += m_fFriction * -m_fCamSpeed.x;
+		//fYAccel += m_fFriction * -m_fCamSpeed.y;
 
-		m_fYaw += m_fXOffset;
-		m_fPitch += m_fYOffset;
+		m_fCamSpeed.x += fXAccel * (float) dt;
+		m_fCamSpeed.x = Math::Clamp(m_fCamSpeed.x, -m_fMaxCamSpeed, m_fMaxCamSpeed);
+		
+
+		m_fCamSpeed.y += fYAccel * (float) dt;
+		m_fCamSpeed.y = Math::Clamp(m_fCamSpeed.y, -m_fMaxCamSpeed, m_fMaxCamSpeed);
+
+		//m_fXOffset *= this->m_fCamSpeed * (float)dt;
+		//m_fYOffset *= this->m_fCamSpeed * (float)dt;
+
+		m_fYaw += m_fCamSpeed.x * (float)dt;
+		m_fPitch += m_fCamSpeed.y * (float)dt;
+		m_fCamSpeed.x *= m_fFriction;
+		m_fCamSpeed.y *= m_fFriction;
+		m_fXOffset = 0;
+		m_fYOffset = 0;
 	}
 	if (m_fPitch > 89.0f)
 		m_fPitch = 89.0f;
