@@ -62,15 +62,15 @@ void Camera::UpdateView(double dt, Vector3 vPos, bool mouseEnabled)
 			if (m_fXOffset < -m_fMinCamForce)
 				m_fXOffset = m_fMinCamForce;
 		}
-		if (fYAccel < 0)
+		if (m_fYOffset < 0)
 		{
-			if (fYAccel > -m_fMinCamForce)
-				fYAccel = -m_fMinCamForce;
+			if (m_fYOffset > -m_fMinCamForce)
+				m_fYOffset = -m_fMinCamForce;
 		}
-		if (fYAccel > 0)
+		if (m_fYOffset > 0)
 		{
-			if (fYAccel < -m_fMinCamForce)
-				fYAccel = m_fMinCamForce;
+			if (m_fYOffset < -m_fMinCamForce)
+				m_fYOffset = m_fMinCamForce;
 		}
 		float fXAccel = m_fXOffset / m_fMass;
 		float fYAccel = m_fYOffset / m_fMass;
