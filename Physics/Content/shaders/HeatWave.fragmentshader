@@ -133,6 +133,8 @@ float getShadowEffect(){
 } 
 
 void main(){
+	//if(lights[0].position_cameraspace.x == 0 && lights[0].position_cameraspace.y == 0 )
+		//return;
 	if(lightEnabled == true)
 	{
 		// Material properties

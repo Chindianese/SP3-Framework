@@ -15,6 +15,7 @@ RenderingManagerBase::~RenderingManagerBase()
 }
 void RenderingManagerBase::BindUniforms()
 {
+	
 	// Get a handle for our uniform
 	m_parameters[U_MVP] = glGetUniformLocation(m_programID, "MVP");
 	//m_parameters[U_MODEL] = glGetUniformLocation(m_programID, "M");
@@ -74,8 +75,8 @@ void RenderingManagerBase::BindUniforms()
 	m_parameters[U_SHADOW_COLOR_TEXTURE2] = glGetUniformLocation(m_gPassShaderID, "colorTexture[2]");
 
 	//--------------------------------------------------------------------------------
-	glUseProgram(m_programID);
 	BindLightUniforms();
+	glUseProgram(m_programID);
 	//================================================================================
 }
 void RenderingManagerBase::BindLightUniforms()
@@ -137,6 +138,7 @@ void RenderingManagerBase::SetUniforms(Scene* scene)
 		glUniform1f(m_LightParameters[U_LIGHT_COSINNER + (U_LIGHT_TOTAL * index)], L->cosInner);
 		glUniform1f(m_LightParameters[U_LIGHT_EXPONENT + (U_LIGHT_TOTAL * index)], L->exponent);
 	}
+	//glUseProgram(m_programID);
 }
 
 void RenderingManagerBase::Init()

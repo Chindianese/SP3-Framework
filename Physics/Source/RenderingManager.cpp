@@ -5,7 +5,7 @@
 #define SHADOW_VIEW_SIZE_X 600
 #define SHADOW_VIEW_SIZE_Y 600
 #define SHADOW_VIEW_SIZE_Z 1000
-#define SHADOW_RES 1024*6
+#define SHADOW_RES 1024*8
 
 #define SWITCH_SHADER true
 RenderingManager::RenderingManager()
@@ -235,8 +235,8 @@ void RenderingManager::RenderWorld(Scene* scene)
 		}
 	}
 	// Render Particle
-	if (m_renderPass == RENDER_PASS_PRE)
-		return;
+	//if (m_renderPass == RENDER_PASS_PRE)
+	//	return;
 	m_bFogEnabled = false;
 	std::map<std::string, LayerData*>* map = GOM->GetLayerList();
 	std::vector<GameObject*>* GOListPart = map->at("Particle")->GetGOList();
