@@ -334,7 +334,22 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 				v *= 1 / (rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce());
 			//v *= rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce();
 		}
-		go1->GetComponent<ChengRigidbody>()->SetVel(v);
+		// moment
+		Vector3 vel1 = go1->GetComponent<ChengRigidbody>()->GetVel();
+		Vector3 vel2 = go2->GetComponent<ChengRigidbody>()->GetVel();
+		float v1length = vel1.LengthSquared();
+		float mass1 = rigid1->GetMass();
+		float bke = 0.5f * mass1 * v1length;
+		float v2length = vel2.LengthSquared();
+		float mass2 = rigid2->GetMass();
+		float xke = 0.5f * mass2 * v2length;
+		float tke = bke + xke;
+		float bv = tke / rigid1->GetMass();
+		bv = sqrt(bv);
+		float xv = tke / rigid2->GetMass();
+		xv = sqrt(xv);
+		go1->GetComponent<ChengRigidbody>()->SetVel(bv * v.Normalize());
+		go2->GetComponent<ChengRigidbody>()->SetVel(xv * vel1.Normalize());
 
 		// Angular
 		if ((trans2->GetPosition() - trans1->GetPosition()).Dot(N) < 0)
@@ -368,7 +383,22 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 				v *= 1 / (rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce());
 			//v *= rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce();
 		}
-		go1->GetComponent<ChengRigidbody>()->SetVel(v);
+		// moment
+		Vector3 vel1 = go1->GetComponent<ChengRigidbody>()->GetVel();
+		Vector3 vel2 = go2->GetComponent<ChengRigidbody>()->GetVel();
+		float v1length = vel1.LengthSquared();
+		float mass1 = rigid1->GetMass();
+		float bke = 0.5f * mass1 * v1length;
+		float v2length = vel2.LengthSquared();
+		float mass2 = rigid2->GetMass();
+		float xke = 0.5f * mass2 * v2length;
+		float tke = bke + xke;
+		float bv = tke / rigid1->GetMass();
+		bv = sqrt(bv);
+		float xv = tke / rigid2->GetMass();
+		xv = sqrt(xv);
+		go1->GetComponent<ChengRigidbody>()->SetVel(bv * v.Normalize());
+		go2->GetComponent<ChengRigidbody>()->SetVel(xv * vel1.Normalize());
 
 		// Angular
 		if ((trans2->GetPosition() - trans1->GetPosition()).Dot(N) < 0)
@@ -381,6 +411,7 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 		// Angular
 		Vector3 torque = (proj * 1).Cross(N * trans1->GetScale().x);
 		rigid1->SetTorque(torque * 10000000);
+		rigid2->SetTorque(torque * 1000000000);
 	}
 	break;
 	case ChengRigidbody::WALL:
@@ -408,8 +439,22 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 				v *= 1 / (rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce());
 			// v *= rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce();
 		}
-
-		go1->GetComponent<ChengRigidbody>()->SetVel(v);
+		// moment
+		Vector3 vel1 = go1->GetComponent<ChengRigidbody>()->GetVel();
+		Vector3 vel2 = go2->GetComponent<ChengRigidbody>()->GetVel();
+		float v1length = vel1.LengthSquared();
+		float mass1 = rigid1->GetMass();
+		float bke = 0.5f * mass1 * v1length;
+		float v2length = vel2.LengthSquared();
+		float mass2 = rigid2->GetMass();
+		float xke = 0.5f * mass2 * v2length;
+		float tke = bke + xke;
+		float bv = tke / rigid1->GetMass();
+		bv = sqrt(bv);
+		float xv = tke / rigid2->GetMass();
+		xv = sqrt(xv);
+		go1->GetComponent<ChengRigidbody>()->SetVel(bv * v.Normalize());
+		go2->GetComponent<ChengRigidbody>()->SetVel(xv * vel1.Normalize());
 
 		// Angular
 		if ((trans2->GetPosition() - trans1->GetPosition()).Dot(N) < 0)
@@ -422,6 +467,7 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 		// Angular
 		Vector3 torque = (proj * 1).Cross(N * trans1->GetScale().x);
 		rigid1->SetTorque(torque * 10000000);
+		rigid2->SetTorque(torque * 1000000000);
 	}
 	break;
 	case ChengRigidbody::PADDLE:

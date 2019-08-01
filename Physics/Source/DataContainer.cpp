@@ -234,7 +234,9 @@ DataContainer::DataContainer()
 	m_map_GO["cube"] = go;
 	go->GetComponent<TransformComponent>()->SetRotation(-90, 0, 1, 0);
 	go->AddComponent(new RenderComponent(this->GetMesh("cube")));
-	go->AddComponent(new ChengRigidbody(ChengRigidbody::BOX, false));
+	ChengRigidbody* rib = new ChengRigidbody(ChengRigidbody::BOX, false);
+	rib->SetMass(100);
+	go->AddComponent(rib);
 	//Square Hole--------------------------------------------------------------------------------
 	go = new GameObject;
 	m_map_GO["squareHole"] = go;

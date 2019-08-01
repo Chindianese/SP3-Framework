@@ -153,7 +153,7 @@ void ChengPlayerScript::UpdateMovement(double dt)
 		{
 			trans->Translate(m_fMovementSpeed * vCameraUp);
 		}
-		if (KeyboardManager::GetInstance()->GetKeyDown("PlayerMoveUp"))
+		if (KeyboardManager::GetInstance()->GetKeyDown("PlayerMoveDown"))
 		{
 			trans->Translate(m_fMovementSpeed * -vCameraUp);
 		}
