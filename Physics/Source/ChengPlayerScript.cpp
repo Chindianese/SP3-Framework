@@ -149,6 +149,14 @@ void ChengPlayerScript::UpdateMovement(double dt)
 		{
 			trans->Translate(m_fMovementSpeed * vRight);
 		}
+		if (KeyboardManager::GetInstance()->GetKeyDown("PlayerMoveUp"))
+		{
+			trans->Translate(m_fMovementSpeed * vCameraUp);
+		}
+		if (KeyboardManager::GetInstance()->GetKeyDown("PlayerMoveUp"))
+		{
+			trans->Translate(m_fMovementSpeed * -vCameraUp);
+		}
 		// Gun================================================================================
 		// Fire--------------------------------------------------------------------------------
 		if (Application::IsMousePressed(0))

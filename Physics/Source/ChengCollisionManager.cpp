@@ -61,8 +61,6 @@ ChengRigidbody::ePhysicsTypes ChengCollisionManager::CheckCollision(GameObject* 
 		//--------------------------------------------------------------------------------
 		//Vector3 N = Vector3(,0,)
 		Mtx44 rot;
-
-		rot.SetToRotation(90, 1, 0, 0);
 		Vector3 N = { 0,1,0 };
 		//--------------------------------------------------------------------------------
 		Vector3 w0minusb1 = trans2->GetPosition() - trans1->GetPosition();
@@ -70,31 +68,39 @@ ChengRigidbody::ePhysicsTypes ChengCollisionManager::CheckCollision(GameObject* 
 		//--------------------------------------------------------------------------------
 		if (w0minusb1.Dot(N) < 0)
 			N = -N;
+		Vector3 NP = { 1,0,0};
 
 		if (rigid1->GetVel().Dot(N) > 0)
 		{
-			Vector3 NP = { -N.z,N.y, N.x };
-
 			Vector3 wallScale = trans2->GetScale();
-			// Shrink wall size to give priority to lower colls
-			const float fOffset = 1.f;
-			wallScale.x += fOffset;
-			wallScale.y += fOffset;
-			wallScale.z += fOffset;
+			wallScale.x *= 1.1f;
+			wallScale.y *= 0.9f;
+			wallScale.z *= 0.9f;
 			// x and z flipped for perpen coll
-			float width = wallScale.x;
-			float height = wallScale.y;
-			float depth = wallScale.y;
-			if (w0minusb1.Dot(N) < trans1->GetScale().x + width * 0.5f
-				&& Math::FAbs(w0minusb1.Dot(NP)) < trans1->GetScale().x + depth * 0.5f
-				&& Math::FAbs(w0minusb1.Dot(NP.Cross(N))) < trans1->GetScale().x + height * 0.5f)
+			//float fTemp = wallScale.x;
+			//wallScale.x = wallScale.x * 1.1f;
+			//wallScale.z = fTemp * 0.9f;
+			//wallScale
+			if (w0minusb1.Dot(N) < trans1->GetScale().x + wallScale.x * 0.5f
+				&& Math::FAbs(w0minusb1.Dot(NP)) < trans1->GetScale().x + wallScale.z * 0.5f
+				&& Math::FAbs(w0minusb1.Dot(NP.Cross(N))) < trans1->GetScale().x + wallScale.y * 0.5f)
 			{
-				//CHENG_LOG("ball - cube");
-				return ChengRigidbody::SQUARE;
+				//CHENG_LOG("ball - square");
+				//// Resolve
+				//// project wall to ball
+				//float radius = trans1->GetScale().x;
+				//Vector3 walltoball = trans1->GetPosition() - trans2->GetPosition();
+				//walltoball.y = 0;
+				//Vector3 radiusOffset = walltoball.Normalized() * radius;
+				////walltoball += radiusOffset;
+				//float projDepth = walltoball.Dot(-N) / walltoball.Length()*walltoball.Length();
+				//float depth = (wallScale.x / 2 + radius) - projDepth;
+				//trans1->Translate(depth * -N);
+				//trans1->Translate({ 0,0,-0.2f });
+				return ChengRigidbody::BOX;
 			}
-
-			//================================================================================
 		}
+
 	}
 	// DO NOT BREAK, FALL THROUGH TO ALLOW PERPEN WALL COLL
 	case ChengRigidbody::SQUARE:
@@ -309,17 +315,38 @@ void ChengCollisionManager::CollisionResponse(GameObject* go1, GameObject* go2, 
 	break;
 	case ChengRigidbody::BOX:
 	{
-		// DEPRECIATED 3D COLLDIER
 		TransformComponent* trans1 = go1->GetComponent<TransformComponent>();
 		TransformComponent* trans2 = go2->GetComponent<TransformComponent>();
 		ChengRigidbody* rigid1 = go1->GetComponent<ChengRigidbody>();
+		ChengRigidbody* rigid2 = go2->GetComponent<ChengRigidbody>();
 		Mtx44 rot;
 		rot.SetToRotation(trans2->GetDegrees() + 90, 0, 1, 0);
-
-		Vector3 N = { 0,1,0 };
+		Vector3 N = rot * Vector3(1, 0, 0);
+		rot.SetToRotation(90, N.x, N.y, N.z);
+		N = rot * N;
+		N = { 0,1,0 };
 		Vector3 v = rigid1->GetVel() - (2 * rigid1->GetVel().Dot(N)) *N;
-		v *= rigid1->GetMat().GetBounce();
+		if (v.Length() > 20)
+		{
+			if (WorldValues::TimeScale > 0)
+				v *= rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce();
+			else
+				v *= 1 / (rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce());
+			//v *= rigid1->GetMat().GetBounce() * rigid2->GetMat().GetBounce();
+		}
 		go1->GetComponent<ChengRigidbody>()->SetVel(v);
+
+		// Angular
+		if ((trans2->GetPosition() - trans1->GetPosition()).Dot(N) < 0)
+		{
+			N = -N;
+		}
+		Vector3 NP = { -N.z,N.y, N.x };
+		// proj vel on NP
+		Vector3 proj = (v.Dot(NP)) / (v.LengthSquared()) * NP;
+		// Angular
+		Vector3 torque = (proj * 1).Cross(N * trans1->GetScale().x);
+		rigid1->SetTorque(torque * 10000000);
 	}
 	break;
 	case ChengRigidbody::SQUARE:

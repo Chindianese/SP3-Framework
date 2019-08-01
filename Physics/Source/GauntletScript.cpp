@@ -79,7 +79,7 @@ void GauntletScript::Update(double dt)
 			}
 		}
 	}
-	m_fCharge += (float)dt * 10;
+	m_fCharge += (float)dt * 1000;
 	if (m_fCharge > 100.f)
 		m_fCharge = 100.f;
 }

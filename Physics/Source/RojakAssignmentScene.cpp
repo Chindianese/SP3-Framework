@@ -105,8 +105,8 @@ void RojakAssignmentScene::Init()
 	go->RENDER->SetColor({ 1, 1, 0 });
 	go->TRANS->SetScale(10);
 	// Rain--------------------------------------------------------------------------------
-	go = dataContainer->GetGameObject("RainSpawner");
-	m_GameObjectManager.AddGameObject(go);
+	//go = dataContainer->GetGameObject("RainSpawner");
+	//m_GameObjectManager.AddGameObject(go);
 	//Board================================================================================
 	float width = 80;
 	float length = 120;
@@ -116,88 +116,89 @@ void RojakAssignmentScene::Init()
 	float fOffset = -thickness;
 	// Walls--------------------------------------------------------------------------------
 	// mid--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("square"));
-	go->TRANS->SetPosition(0, 0, -length / 2);
-	go->TRANS->SetRotation(45, 0, 1, 0);
-	go->TRANS->SetScale(thickness, height, thickness);
-	// top--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
-	go->TRANS->SetPosition(0, 0, -length);
-	go->TRANS->SetScale(thickness, height, width * 2 + fOffset);
-	// bot left--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
-	go->TRANS->SetPosition(-(width / 2 + holeWidth / 2), 0, length - 20);
-	go->TRANS->SetRotation(60, 0, 1, 0);
-	go->TRANS->SetRotation(60, 0, 1, 0);
-	go->TRANS->SetScale(thickness, height, width - holeWidth / 2);
-	// bot right--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
-	go->TRANS->SetPosition((width / 2 + holeWidth / 2), 0, length - 20);
-	go->TRANS->SetRotation(-60, 0, 1, 0);
-	go->TRANS->SetScale(thickness, height, width - holeWidth / 2);
-	// goal--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("goal"));
-	go->TRANS->SetPosition(0, 0, length + 20);
-	go->TRANS->SetScale(thickness, height, holeWidth + 40);
+	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("cube"));
+	go->TRANS->SetPosition(0, 20, -length / 2);
+	//go->TRANS->SetRotation(0, 0, 1, 0);
+	float cubesize = 10;
+	go->TRANS->SetScale(cubesize, cubesize, cubesize);
+	//// top--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
+	//go->TRANS->SetPosition(0, 0, -length);
+	//go->TRANS->SetScale(thickness, height, width * 2 + fOffset);
+	//// bot left--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
+	//go->TRANS->SetPosition(-(width / 2 + holeWidth / 2), 0, length - 20);
+	//go->TRANS->SetRotation(60, 0, 1, 0);
+	//go->TRANS->SetRotation(60, 0, 1, 0);
+	//go->TRANS->SetScale(thickness, height, width - holeWidth / 2);
+	//// bot right--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
+	//go->TRANS->SetPosition((width / 2 + holeWidth / 2), 0, length - 20);
+	//go->TRANS->SetRotation(-60, 0, 1, 0);
+	//go->TRANS->SetScale(thickness, height, width - holeWidth / 2);
+	//// goal--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("goal"));
+	//go->TRANS->SetPosition(0, 0, length + 20);
+	//go->TRANS->SetScale(thickness, height, holeWidth + 40);
 	//go->AddComponent(new Blackhole(1000, 200));
-	// left--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
-	go->TRANS->SetPosition(-width, 0, 0);
-	go->TRANS->SetRotation(0, 0, 1, 0);
-	go->TRANS->SetScale(thickness, height, length * 2 + fOffset);
-	// right--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
-	go->TRANS->SetPosition(width, 0, 0);
-	go->TRANS->SetRotation(0, 0, 1, 0);
-	go->TRANS->SetScale(thickness, height, length * 2 + fOffset);
+	//// left--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
+	//go->TRANS->SetPosition(-width, 0, 0);
+	//go->TRANS->SetRotation(0, 0, 1, 0);
+	//go->TRANS->SetScale(thickness, height, length * 2 + fOffset);
+	//// right--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
+	//go->TRANS->SetPosition(width, 0, 0);
+	//go->TRANS->SetRotation(0, 0, 1, 0);
+	//go->TRANS->SetScale(thickness, height, length * 2 + fOffset);
 	// floor--------------------------------------------------------------------------------
 	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("wall"));
 	//go->TRANS->SetPosition(0, -thickness / 2, 0);
 	//go->TRANS->SetRotation(90, 0, 0, 1);
 	//go->TRANS->SetScale(thickness, 1000, 1000);
-	// pillar left--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
-	go->TRANS->SetPosition(-width / 2, 0, 0);
-	go->TRANS->SetScale(15, height, 15);
-	// Pillar right--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
-	go->TRANS->SetPosition(width / 2, 0, 0);
-	go->TRANS->SetScale(15, height, 15);
-	// Pillar Bot Right--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
-	go->TRANS->SetPosition(width / 2 + 25, 0, 80);
-	go->TRANS->SetScale(5, height, 5);
-	// Pillar Bot Left--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
-	go->TRANS->SetPosition(-width / 2 - 25, 0, 80);
-	go->TRANS->SetScale(5, height, 5);
-	//Paddle
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("paddle"));
-	go->RENDER->SetColor({ 0,0,1 });
-	go->TRANS->SetPosition(-holeWidth, 0, length - 17.5f);
-	go->TRANS->SetRotation(-90, 0, 1, 0);
-	//Paddle
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("paddleRight"));
-	go->RENDER->SetColor({ 0,0,1 });
-	go->TRANS->SetPosition(holeWidth, 0, length - 17.5f);
-	go->TRANS->SetRotation(90, 0, 1, 0);
+	//// pillar left--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
+	//go->TRANS->SetPosition(-width / 2, 0, 0);
+	//go->TRANS->SetScale(15, height, 15);
+	//// Pillar right--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
+	//go->TRANS->SetPosition(width / 2, 0, 0);
+	//go->TRANS->SetScale(15, height, 15);
+	//// Pillar Bot Right--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
+	//go->TRANS->SetPosition(width / 2 + 25, 0, 80);
+	//go->TRANS->SetScale(5, height, 5);
+	//// Pillar Bot Left--------------------------------------------------------------------------------
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillar"));
+	//go->TRANS->SetPosition(-width / 2 - 25, 0, 80);
+	//go->TRANS->SetScale(5, height, 5);
+	////Paddle
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("paddle"));
+	//go->RENDER->SetColor({ 0,0,1 });
+	//go->TRANS->SetPosition(-holeWidth, 0, length - 17.5f);
+	//go->TRANS->SetRotation(-90, 0, 1, 0);
+	////Paddle
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("paddleRight"));
+	//go->RENDER->SetColor({ 0,0,1 });
+	//go->TRANS->SetPosition(holeWidth, 0, length - 17.5f);
+	//go->TRANS->SetRotation(90, 0, 1, 0);
 	// Obstacles--------------------------------------------------------------------------------
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("fanBlade"));
+	/*go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("fanBlade"));
 	go->TRANS->SetPosition(0, 0, -length / 8);
 	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("fanBlade"));
 	go->TRANS->SetPosition(0, 0, -length / 8);
 	go->TRANS->SetRotation(120, 0, 1, 0);
 	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("fanBlade"));
 	go->TRANS->SetPosition(0, 0, -length / 8);
-	go->TRANS->SetRotation(240, 0, 1, 0);
-	// Hole
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillarHole"));
-	go->TRANS->SetPosition(width / 2, 0, -length / 2);
-	go->RENDER->SetColor({ 0,0,0 });
-	// Hole
-	go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("squareHole"));
-	go->TRANS->SetPosition(-width / 2, 0, -length / 2);
-	go->RENDER->SetColor({ 0,0,0 });
+	go->TRANS->SetRotation(240, 0, 1, 0);*/
+	//// Hole
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("pillarHole"));
+	//go->TRANS->SetPosition(width / 2, 0, -length / 2);
+	//go->RENDER->SetColor({ 0,0,0 });
+	//// Hole
+	//go = m_GameObjectManager.AddGameObject(dataContainer->GetGameObject("squareHole"));
+	//go->TRANS->SetPosition(-width / 2, 0, -length / 2);
+	//go->RENDER->SetColor({ 0,0,0 });
 	// Terrain--------------------------------------------------------------------------------
 	go = m_GameObjectManager.AddGameObject();
 	go->AddComponent(new RenderComponent(dataContainer->GetHeightMap("TerrainFlat")->GetMesh()));

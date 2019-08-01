@@ -35,6 +35,9 @@ DataContainer::DataContainer()
 
 	m_map_Meshes["square"] = MeshBuilder::GenerateCube("wall", Color((float)0.5, (float)0.5, (float)0.2), 1.f);
 
+	m_map_Meshes["cube"] = MeshBuilder::GenerateOBJ("cube2");
+	m_map_Meshes["cube"]->m_uTextureArray[0] = LoadTGA("cube");
+
 	m_map_Meshes["goal"] = MeshBuilder::GenerateCube("wall", Color((float)0.8, (float)0.2, (float)0.2), 1.f);
 
 	m_map_Meshes["Quad"] = MeshBuilder::GenerateQuadLeftCentered(Color(1.f, 1.f, 1.f), 1.f);
@@ -210,7 +213,7 @@ DataContainer::DataContainer()
 	bullet->AddComponent(new BulletScript(20.f));
 	ChengRigidbody* rigid = new ChengRigidbody(ChengRigidbody::BALL);
 	rigid->SetMat(1, 0.5f);
-	rigid->LockYAxis(true);
+	rigid->LockYAxis(false);
 	bullet->AddComponent(rigid);
 	bullet->AddComponent(new BallScript());
 	m_map_GO["bullet"] = bullet;
@@ -226,6 +229,12 @@ DataContainer::DataContainer()
 	go->GetComponent<TransformComponent>()->SetRotation(-90, 0, 1, 0);
 	go->AddComponent(new RenderComponent(this->GetMesh("square")));
 	go->AddComponent(new ChengRigidbody(ChengRigidbody::SQUARE, false));
+	// Square--------------------------------------------------------------------------------
+	go = new GameObject;
+	m_map_GO["cube"] = go;
+	go->GetComponent<TransformComponent>()->SetRotation(-90, 0, 1, 0);
+	go->AddComponent(new RenderComponent(this->GetMesh("cube")));
+	go->AddComponent(new ChengRigidbody(ChengRigidbody::BOX, false));
 	//Square Hole--------------------------------------------------------------------------------
 	go = new GameObject;
 	m_map_GO["squareHole"] = go;
