@@ -42,5 +42,7 @@ public:
 	virtual void Start();
 
 	bool IsActive();
-	virtual void SetActive(bool b);
+	void SetActive(bool b);
+	bool IsStarted();
+	void SetStarted(bool);
 };

@@ -86,6 +86,8 @@ void Engine::Update(double dt)
 		std::vector<GameObject*>* GOList = it->second->GetGOList();
 		for (unsigned i = 0; i < GOList->size(); ++i)
 		{
+			if (!GOList->at(i)->IsActive())
+				continue;
 			GOList->at(i)->Update(dt);
 		}
 	}
@@ -135,5 +137,6 @@ void Engine::Exit()
 	DataContainer::DeleteInstance();
 	KeyboardManager::DeleteInstance();
 	AudioManager::DeleteInstance();
+	Preferences::Clear();
 	Time::DeleteInstance();
 }

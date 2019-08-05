@@ -3,8 +3,10 @@
 #include "DataContainer.h"
 
 ComponentBase::ComponentBase()
+	: m_vec_RefList{ nullptr }
+	, m_bStarted{ false }
+	, m_bActive{ true }
 {
-	m_vec_RefList = nullptr;
 	m_bStarted = false;
 }
 ComponentBase::ComponentBase(ComponentBase& com)
@@ -48,4 +50,13 @@ void ComponentBase::SetActive(bool b)
 void ComponentBase::SetParent(GameObject* g)
 {
 	m_parent = g;
+}
+}
+bool ComponentBase::IsStarted()
+{
+	return m_bStarted;
+}
+void ComponentBase::SetStarted(bool b)
+{
+	m_bStarted = b;
 }
