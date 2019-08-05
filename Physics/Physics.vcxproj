@@ -181,11 +181,13 @@
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\MeshController.cpp" />
     <ClCompile Include="Source\MouseManager.cpp" />
+    <ClCompile Include="Source\PhysicsScript.cpp" />
     <ClCompile Include="Source\PlayerScript.cpp" />
     <ClCompile Include="Source\RenderComponent.cpp" />
     <ClCompile Include="Source\RenderingManager.cpp" />
     <ClCompile Include="Source\RenderingManagerBase.cpp" />
     <ClCompile Include="Source\Resources.cpp" />
+    <ClCompile Include="Source\RocketScript.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\ScriptComponent.cpp" />
@@ -195,6 +197,9 @@
     <ClCompile Include="Source\TransformComponent.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Preferences.cpp" />
+    <ClCompile Include="Source\WeaponRocketLauncherScript.cpp" />
+    <ClCompile Include="Source\WeaponScript.cpp" />
+    <ClCompile Include="Source\WeaponSniperRifleScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h" />
@@ -230,12 +235,14 @@
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\MeshController.h" />
     <ClInclude Include="Source\MouseManager.h" />
+    <ClInclude Include="Source\PhysicsScript.h" />
     <ClInclude Include="Source\PlayerScript.h" />
     <ClInclude Include="Source\RenderComponent.h" />
     <ClInclude Include="Source\Renderer.h" />
     <ClInclude Include="Source\RenderingManager.h" />
     <ClInclude Include="Source\RenderingManagerBase.h" />
     <ClInclude Include="Source\Resources.h" />
+    <ClInclude Include="Source\RocketScript.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\ScriptComponent.h" />
@@ -247,6 +254,9 @@
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />
     <ClInclude Include="Source\Preferences.h" />
+    <ClInclude Include="Source\WeaponRocketLauncherScript.h" />
+    <ClInclude Include="Source\WeaponScript.h" />
+    <ClInclude Include="Source\WeaponSniperRifleScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\comg.fragmentshader" />

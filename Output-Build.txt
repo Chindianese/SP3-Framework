@@ -1,0 +1,7 @@
+﻿1>------ Build started: Project: Physics, Configuration: Debug Win32 ------
+1>RocketScript.cpp
+1>C:\Users\admin\source\repos\SP3-Framework\Physics\Source\ComponentBase.h(6,24): warning C4091:  'extern ': ignored on left of 'GameObject' when no variable is declared
+1>C:\Users\admin\source\repos\SP3-Framework\Physics\Source\RocketScript.cpp(13,130): warning C4305:  'argument': truncation from 'double' to 'float'
+1>Physics.vcxproj -> C:\Users\admin\Source\Repos\SP3-Framework\Debug\Physics.exe
+1>Done building project "Physics.vcxproj".
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========

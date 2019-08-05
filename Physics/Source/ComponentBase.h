@@ -3,18 +3,23 @@
 #include "Locator.h"
 #include <string>
 
+class GameObject;
+
 class ComponentBase
 {
 private:
 	bool m_bStarted;
-	std::vector<ComponentBase*>* m_vec_RefList = nullptr;
 	bool m_bActive;
+protected:
+	std::vector<ComponentBase*>* m_vec_RefList = nullptr;
+	GameObject* m_parent = nullptr;
 public:
 	ComponentBase();
 	virtual ~ComponentBase();
 	ComponentBase(ComponentBase& com);
 
 	void Init(std::vector<ComponentBase*>* refList);
+	void SetParent(GameObject* g);
 	virtual void Update(double dt);
 
 	template <class t>
@@ -37,5 +42,5 @@ public:
 	virtual void Start();
 
 	bool IsActive();
-	void SetActive(bool b);
+	virtual void SetActive(bool b);
 };

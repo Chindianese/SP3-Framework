@@ -44,6 +44,11 @@
     <ClCompile Include="Source\InputManager.cpp" />
     <ClCompile Include="Source\InputBinding.cpp" />
     <ClCompile Include="Source\MouseManager.cpp" />
+    <ClCompile Include="Source\WeaponScript.cpp" />
+    <ClCompile Include="Source\PhysicsScript.cpp" />
+    <ClCompile Include="Source\WeaponSniperRifleScript.cpp" />
+    <ClCompile Include="Source\WeaponRocketLauncherScript.cpp" />
+    <ClCompile Include="Source\RocketScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h" />
@@ -96,6 +101,11 @@
     <ClInclude Include="Source\InputBinding.h" />
     <ClInclude Include="Source\InputDeviceManager.h" />
     <ClInclude Include="Source\MouseManager.h" />
+    <ClInclude Include="Source\WeaponScript.h" />
+    <ClInclude Include="Source\PhysicsScript.h" />
+    <ClInclude Include="Source\WeaponSniperRifleScript.h" />
+    <ClInclude Include="Source\WeaponRocketLauncherScript.h" />
+    <ClInclude Include="Source\RocketScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\comg.fragmentshader" />

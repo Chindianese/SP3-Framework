@@ -1,6 +1,7 @@
 #include "ComponentBase.h"
 #include "SceneManager.h"
 #include "DataContainer.h"
+
 ComponentBase::ComponentBase()
 {
 	m_vec_RefList = nullptr;
@@ -43,4 +44,8 @@ bool ComponentBase::IsActive()
 void ComponentBase::SetActive(bool b)
 {
 	m_bActive = b;
+}
+void ComponentBase::SetParent(GameObject* g)
+{
+	m_parent = g;
 }

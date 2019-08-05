@@ -19,6 +19,11 @@ private:
 
 	float m_fPitch;
 	float m_fYaw;
+	float m_fRoll;
+
+	float m_fPitchTorque;
+	float m_fYawTorque;
+	float m_fRollTorque;
 
 	float m_fXOffset;
 	float m_fYOffset;
@@ -36,6 +41,7 @@ public:
 	virtual void Reset();
 	virtual void Update(double dt);
 	void UpdateYawPitchMouse(float xpos, float ypos);
+	void SetCamSpeed(float speed);
 	bool IsOrthoInit();
 	Vector3 GetOrthoSize();
 	// Getters
@@ -43,6 +49,10 @@ public:
 	Vector3 GetUp();
 	Vector3 GetDir();
 	void SetDir(float yaw, float pitch);
+	float GetYaw();
+	float GetPitch();
+	void AddTorque(float yaw, float pitch);
+	void AddTorque(float yaw, float pitch, float roll);
 };
 
 #endif

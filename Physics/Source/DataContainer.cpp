@@ -10,6 +10,16 @@ DataContainer::DataContainer()
 	//m_map_Meshes["Text"]->material.kAmbient.Set(1, 0, 0);
 
 	m_map_Meshes["Quad"] = MeshBuilder::GenerateQuad("Quad", { 1,1,1 }, 5);
+
+	m_map_Meshes["QuadScope"] = MeshBuilder::GenerateQuad("QuadScope", { 1,1,1 }, 2);
+	m_map_Meshes["QuadScope"]->m_uTextureArray[0] = LoadTGA("scope");
+
+	m_map_Meshes["QuadSniper"] = MeshBuilder::GenerateQuad("QuadSniper", { 1,1,1 }, 2);
+	m_map_Meshes["QuadSniper"]->m_uTextureArray[0] = LoadTGA("sniper");
+
+	m_map_Meshes["QuadRPG"] = MeshBuilder::GenerateQuad("QuadRPG", { 1,1,1 }, 2);
+	m_map_Meshes["QuadRPG"]->m_uTextureArray[0] = LoadTGA("rocket");
+
 	//m_map_Meshes["CUBE"] = MeshBuilder::GenerateCube("CUBE", { 0,1,1 }, 10);
 	m_map_Meshes["Cube"] = MeshBuilder::GenerateOBJ("cube");
 	m_map_Meshes["Cube"]->m_uTextureArray[0] = LoadTGA("cube");

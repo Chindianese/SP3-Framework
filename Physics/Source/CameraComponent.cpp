@@ -8,6 +8,16 @@ CameraComponent::CameraComponent()
 	m_bMouseEnabled = true;
 }
 
+float CameraComponent::GetFOV()
+{
+	return m_fFOV;
+}
+
+void CameraComponent::SetFOV(float fov)
+{
+	m_fFOV = fov;
+}
+
 CameraComponent::~CameraComponent()
 {
 }

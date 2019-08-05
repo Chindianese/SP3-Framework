@@ -17,9 +17,12 @@ public:
 private:
 	eCameraTypes m_eCameraType;
 	Camera m_Camera;
+	float m_fFOV;
 	bool m_bMouseEnabled;
 public:
 	CameraComponent();
+	float GetFOV();
+	void SetFOV(float fov);
 	virtual ~CameraComponent();
 	virtual ComponentBase* Clone()
 	{

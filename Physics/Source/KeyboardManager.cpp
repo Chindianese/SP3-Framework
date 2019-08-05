@@ -34,6 +34,7 @@ unsigned short ToKey(std::string str)
 	if (str == "rshift") return VK_RSHIFT;
 	if (str == "lctrl") return VK_LCONTROL;
 	if (str == "rctrl") return VK_RCONTROL;
+	if (str == "space") return VK_SPACE;
 	return NULL;
 }
 

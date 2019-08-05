@@ -1,7 +1,11 @@
 #include "TestScene.h"
 #include "PlayerScript.h"
+#include "WeaponScript.h"
 #include "AudioManager.h"
 #include "Constrain.h"
+#include "WeaponSniperRifleScript.h"
+#include "WeaponRocketLauncherScript.h"
+#include "PhysicsScript.h"
 TestScene::TestScene()
 {
 }
@@ -40,7 +44,7 @@ void TestScene::Init()
 
 	// text
 	GameObject* text = m_GameObjectManager.AddGameObject("UI");
-	text->TRANS->SetPosition(50, 50, 200);
+	text->TRANS->SetPosition(10, 10, 50);
 	text->AddComponent(new RenderComponent(dataContainer->GetMesh("Text"), "oof"));
 	text->RENDER->SetLightEnabled(false);
 	text->SetActive(true);
@@ -89,7 +93,7 @@ void TestScene::Init()
 	depth->TRANS->SetScale(1, 1, 1);
 	depth->TRANS->SetPosition(20, 10, 1);
 	//depth->TRANSFORM->SetRotation(-90, 1, 0, 0);
-	depth->AddComponent(new RenderComponent(dataContainer->GetMesh("Depth")));
+	depth->AddComponent(new RenderComponent(dataContainer->GetMesh("QuadScope")));
 	depth->RENDER->SetLightEnabled(true);
 	depth->SetActive(true);
 	//
@@ -97,9 +101,14 @@ void TestScene::Init()
 	//Player
 	GameObject* player = m_GameObjectManager.AddGameObject();
 	player->TRANS->SetPosition(0, 15, 50);
-	player->AddComponent(new PlayerScript(dataContainer->GetGameObject("Cube")));
+	PlayerScript* p = new PlayerScript(text);
+	player->AddComponent(p);
+	p->AddWeapon(new WeaponSniperRifleScript());
+	p->AddWeapon(new WeaponScript());
+	p->AddWeapon(new WeaponRocketLauncherScript());
 	player->AddChild(m_CameraGO);
-	player->AddComponent(new Constrain(dataContainer->GetHeightMap("Terrain"), Constrain::LIMIT));
+	player->AddComponent(new Constrain(dataContainer->GetHeightMap("Terrain"), Constrain::LIMIT, 0.1f));
+	player->AddComponent(new PhysicsScript());
 	//AudioManager::GetInstance()->PlayBGM("despacito.wav");
 
 	// Cat
