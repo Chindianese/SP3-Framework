@@ -233,6 +233,7 @@
     <ClCompile Include="Source\AmmoDumpScript.cpp" />
     <ClCompile Include="Source\EnemyAIScript.cpp" />
     <ClCompile Include="Source\ProneState.cpp" />
+    <ClCompile Include="Source\LmaoPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\LightManager.h" />
@@ -454,6 +455,7 @@
     <ClInclude Include="Source\AmmoDumpScript.h" />
     <ClInclude Include="Source\EnemyAIScript.h" />
     <ClInclude Include="Source\ProneState.h" />
+    <ClInclude Include="Source\LmaoPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\comg.fragmentshader" />

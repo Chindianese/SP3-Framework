@@ -18,7 +18,7 @@
 #include "DepthFBO.h"
 #include "MeshBuilder.h"
 #include "RenderComponent.h"
-#define FOG_ENABLED true
+#define FOG_ENABLED false
 #define MAX_LIGHTS 8
 
 class RenderingManagerBase : public Renderer
