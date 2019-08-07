@@ -91,7 +91,7 @@ void RojakAssignmentScene::Init()
 	go = m_GOM.AddGameObject();
 	go->TRANS->SetPosition(0, 0, 50);
 	go->AddComponent(new ChengPlayerScript(gun, Crosshair, Gaunt, dataContainer->GetGameObject("Blood")));
-	go->AddComponent(new ChengRigidbody(ChengRigidbody::PILLAR, false));
+	go->AddComponent(new ChengRigidbody(ChengRigidbody::BALL, false));
 	go->GetComponent<ChengRigidbody>()->SetMat(.99f, 0);
 	go->TRANS->SetScale(5, 25, 5);
 	/*GameObject* child = dataContainer->GetGameObject("playerPillar");

@@ -53,7 +53,7 @@ void RojakScene2::Init()
 	m_GOM.AddGameObject(dataContainer->GetGameObject("FPS"), "UI");
 	// Crosshair--------------------------------------------------------------------------------
 	GameObject* Crosshair = m_GOM.AddGameObject("UI");
-	Crosshair->TRANS->SetPosition(1920 / 2, 1080 / 2, 5);
+	Crosshair->TRANS->SetPosition(1920 / 2 + 40, 1080 / 2, 5);
 	Crosshair->TRANS->SetScale(40.f, 40.f, 1.f);
 	Crosshair->AddComponent(new RenderComponent(dataContainer->GetMesh("Crosshair")));
 	Crosshair->RENDER->SetLightEnabled(false);
@@ -107,7 +107,7 @@ void RojakScene2::Init()
 	//go->AddComponent(new RenderComponent(dataContainer->GetMesh("ball")));
 	go->AddComponent(new Constrain(dataContainer->GetHeightMap("TerrainPlains"), Constrain::eConstrainTypes::LIMIT));
 	GameObject* child = dataContainer->GetGameObject("pillar");
-	child->RENDER->SetColor({ 0.2f,0.1,0.9f });
+	child->RENDER->SetColor({ 0.2f,0.1f,0.9f });
 	go->AddChild(child);
 	/// WORLD================================================================================
 	// Skyplane--------------------------------------------------------------------------------
