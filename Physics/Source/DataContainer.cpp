@@ -25,6 +25,16 @@ DataContainer::DataContainer()
 	m_map_Meshes["Cube"]->m_uTextureArray[0] = LoadTGA("cube");
 	m_map_Meshes["Cube"]->m_uTextureArray[1] = LoadTGA("moss1");
 
+	m_map_Meshes["Ammo"] = MeshBuilder::GenerateQuad("Quad", {1,1,1}, 5);
+	m_map_Meshes["Ammo"]->m_uTextureArray[0] = LoadTGA("ammo3");
+
+	m_map_Meshes["Minimap"] = MeshBuilder::GenerateQuad("Quad", { 1,1,1 }, 5);
+	m_map_Meshes["Minimap"]->m_uTextureArray[0] = 2;
+
+	m_map_Meshes["Creeper"] = MeshBuilder::GenerateOBJ("cube");
+	m_map_Meshes["Creeper"]->m_uTextureArray[0] = LoadTGA("cube");
+	m_map_Meshes["Creeper"]->m_uTextureArray[0] = LoadTGA("enemy");
+
 	m_map_Meshes["Ground"] = MeshBuilder::GenerateQuad("Ground", { 1.f,1.f,1.f }, 500);
 	//m_map_Meshes["GROUND"]->m_uTextureArray[0] = 1;
 	m_map_Meshes["Depth"] = MeshBuilder::GenerateQuad("Depth", { 1.f,1.f,1.f }, 10);
@@ -39,7 +49,8 @@ DataContainer::DataContainer()
 	m_map_Meshes["Water"] = MeshBuilder::GenerateOBJ("water");
 	m_map_Meshes["Water"]->m_uTextureArray[0] = LoadTGA("water");
 
-	GenerateTerrain("Terrain", "heightmapMain", { 500,50,500 });
+	GenerateTerrain("Terrain", "heightmap", { 500,50,500 });
+	m_map_HeightMaps["Terrain"]->GetMesh()->m_uTextureArray[0] = LoadTGA("tiles");
 	//--------------------------------------------------------------------------------
 	// Gameobjects--------------------------------------------------------------------------------
 	GameObject* cube = new GameObject();

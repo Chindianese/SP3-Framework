@@ -4,6 +4,7 @@ GameObject::GameObject()
 {
 	m_bActive = true;
 	m_bStatic = false;
+	parent = nullptr;
 	AddComponent(new TransformComponent);
 }
 // Copy
@@ -110,6 +111,12 @@ void GameObject::Update(double dt)
 void GameObject::AddChild(GameObject* go)
 {
 	m_vec_ChildList.push_back(go);
+	go->parent = this;
+}
+
+GameObject* GameObject::GetParent()
+{
+	return parent;
 }
 std::vector<GameObject*>* GameObject::GetChildList()
 {

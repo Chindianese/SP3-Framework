@@ -17,6 +17,7 @@ void PhysicsScript::Update(double dt)
 	TransformComponent * tc = GetComponent<TransformComponent>();
 	tc->Translate(m_vVelocity * dt);
 	m_vVelocity += m_vAcceleration * dt;
+	m_vVelocity = m_vVelocity * 0.98;
 }
 
 void PhysicsScript::SetVelocity(Vector3 velocity)

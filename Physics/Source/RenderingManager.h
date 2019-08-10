@@ -14,6 +14,7 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include "Locator.h"
+#include "ColorFBO.h"
 
 #include <vector>
 #include <sstream>
@@ -26,7 +27,9 @@ public:
 
 	virtual void RenderPassGPass(Scene* scene);
 	virtual void RenderPassMain(Scene* scene);
+	void RenderPassMinimap(Scene* scene);
 	virtual void RenderWorld(Scene* scene);
+	ColorFBO* GetColorFBO();
 protected:
 	RenderingManager();
 	virtual ~RenderingManager();
@@ -39,6 +42,7 @@ protected:
 	float m_speed;
 	float m_worldWidth;
 	float m_worldHeight;
+	ColorFBO m_colorFBO;
 };
 
 #endif

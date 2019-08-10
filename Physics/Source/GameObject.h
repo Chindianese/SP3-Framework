@@ -19,6 +19,7 @@ private:
 	bool m_bActive;
 	std::vector<ComponentBase*> m_vec_ComponentList;
 	std::vector<GameObject*> m_vec_ChildList;
+	GameObject* parent;
 	//Transform* m_Transform;
 public:
 	GameObject();
@@ -47,6 +48,7 @@ public:
 		return nullptr;
 	};
 	void AddChild(GameObject* go);
+	GameObject* GetParent();
 	std::vector<GameObject*>* GetChildList();
 
 	void SetActive(bool b);

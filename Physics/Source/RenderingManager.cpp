@@ -2,8 +2,8 @@
 #include "Application.h"
 #include "RenderComponent.h"
 #define VIEW_AS_LIGHT false
-#define SHADOW_VIEW_SIZE_X 200
-#define SHADOW_VIEW_SIZE_Y 200
+#define SHADOW_VIEW_SIZE_X 400
+#define SHADOW_VIEW_SIZE_Y 400
 #define SHADOW_VIEW_SIZE_Z 1000
 #define SHADOW_RES 1024*3
 
@@ -13,6 +13,7 @@ RenderingManager::RenderingManager()
 	m_worldHeight = 100.f;
 	m_worldWidth = 100.f;
 	m_speed = 1.f;
+	m_colorFBO.Init(400, 400);
 }
 
 RenderingManager::~RenderingManager()
@@ -24,6 +25,7 @@ void RenderingManager::Init()
 	RenderingManagerBase::Init();
 	// Shadows
 	m_lightDepthFBO.Init(SHADOW_RES, SHADOW_RES);
+	m_colorFBO.Init(400, 400);
 	Math::InitRNG();
 }
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
@@ -51,6 +53,8 @@ void RenderingManager::Render(Scene* scene)
 		DEFAULT_LOG("ERROR: NO CAMERA GAMEOBJECT");
 		return;
 	}
+	RenderPassMinimap(scene);
+	RenderPassMinimap(scene);
 	//******************************* PRE RENDER PASS
 	//*************************************
 	RenderPassGPass(scene);
@@ -58,6 +62,29 @@ void RenderingManager::Render(Scene* scene)
 	//************************************
 	RenderPassMain(scene);
 }
+void RenderingManager::RenderPassMinimap(Scene* scene)
+{
+	m_renderPass = RENDER_PASS_PRE;
+	m_colorFBO.BindForWriting();
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glUseProgram(m_programID);
+	//These matrices should change when light position or direction changes
+	Mtx44 proj;
+	proj.SetToOrtho(-50, 50, -50, 50, -1000, 1000);
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(proj);
+	Vector3 playerPos = scene->GetCameraGameObject()->TRANS->GetPosition();
+	Vector3 lookDir = scene->GetCamera()->GetDir();
+	viewStack.PushMatrix();
+	viewStack.LookAt(playerPos.x, 200, playerPos.z, playerPos.x, 0, playerPos.z, lookDir.x, lookDir.y, lookDir.z);
+	RenderWorld(scene);
+	viewStack.PopMatrix();
+	projectionStack.PopMatrix();
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 void RenderingManager::RenderPassGPass(Scene* scene)
 {
 	m_renderPass = RENDER_PASS_PRE;
@@ -251,6 +278,10 @@ void RenderingManager::RenderWorld(Scene* scene)
 			RenderGameObject(goChild, vCamPos, true);
 		}
 	}
+}
+ColorFBO* RenderingManager::GetColorFBO()
+{
+	return &m_colorFBO;
 }
 void RenderingManager::RenderGameObject(GameObject* go, Vector3 vCamPos, bool bIsUI)
 {

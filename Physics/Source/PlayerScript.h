@@ -11,9 +11,17 @@ private:
 	GameObject* m_ammoText;
 	int weaponIndex;
 	float walkCameraDelay;
-	bool cameraSwayDirection;
+	bool crouchBounce;
+	enum eCrouchState
+	{
+		WALK,
+		CROUCH,
+		PRONE
+	};
+	eCrouchState currentState;
 public:
 	void AddWeapon(WeaponScript* weapon);
+	WeaponScript* GetWeapon();
 	PlayerScript(GameObject* ammoText);
 	virtual ~PlayerScript();
 	virtual ComponentBase* Clone()

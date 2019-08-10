@@ -55,6 +55,7 @@ void Camera::Update(double dt)
 }
 void Camera::UpdateView(double dt, Vector3 vPos, bool mouseEnabled)
 {
+	dt = (dt > 0.05 ? 0.05 : dt);
 	if (mouseEnabled)
 	{
 		m_fXOffset *= this->m_fCamSpeed * (float)dt;

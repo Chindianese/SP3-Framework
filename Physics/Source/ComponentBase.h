@@ -42,7 +42,8 @@ public:
 	virtual void Start();
 
 	bool IsActive();
-	void SetActive(bool b);
+	virtual void SetActive(bool b);
+	GameObject* GetParent();
 	bool IsStarted();
 	void SetStarted(bool);
 };

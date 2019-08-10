@@ -6,6 +6,7 @@
 #include "AudioManager.h"
 #include "RocketScript.h"
 #include "Constrain.h"
+#include "Collider.h"
 
 WeaponRocketLauncherScript::WeaponRocketLauncherScript()
 {
@@ -42,9 +43,10 @@ void WeaponRocketLauncherScript::Fire()
 	GameObject* bullet = gom->AddGameObject();
 	TransformComponent* tc = GetComponent<TransformComponent>();
 	bullet->AddComponent(new RenderComponent(DataContainer::GetInstance()->GetMesh("Cube")));
-	bullet->GetComponent<TransformComponent>()->SetPosition(tc->GetPosition());
+	bullet->GetComponent<TransformComponent>()->SetPosition(tc->GetPosition() + GetCamera()->GetDir() - GetCamera()->GetUp() + 2 * GetCamera()->GetDir().Cross(GetCamera()->GetUp()));
 	bullet->AddComponent(new PhysicsScript(GetCamera()->GetDir() * m_fProjectileSpeed));
-	Constrain* c = new Constrain(DataContainer::GetInstance()->GetHeightMap("Terrain"), Constrain::LIMIT, 0);
+	Constrain* c = new Constrain(DataContainer::GetInstance()->GetHeightMap("Terrain"), Constrain::LIMIT, -20);
+	bullet->AddComponent(new Collider(Vector3(0.2, 0.2)));
 	bullet->AddComponent(c);
 	bullet->AddComponent(new RocketScript(c));
 	GetCamera()->AddTorque(Math::RandFloatMinMax(-20, 20), Math::RandFloatMinMax(60, 80));

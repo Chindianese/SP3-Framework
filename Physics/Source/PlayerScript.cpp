@@ -10,6 +10,7 @@ PlayerScript::PlayerScript(GameObject* ammoText)
 	weaponIndex = 0;
 	m_ammoText = ammoText; 
 	walkCameraDelay = 0;
+	currentState = WALK;
 }
 
 PlayerScript::~PlayerScript()
@@ -36,10 +37,14 @@ void PlayerScript::Update(double dt)
 
 	float fSpeed = (float)dt * 3.0f;
 	Vector3 vRight = m_vCameraFront.Cross(m_vCameraUp);
-	if (InputManager::GetInstance()->GetInputStrength("PlayerSprint") > 0) 
+	if (InputManager::GetInstance()->GetInputStrength("PlayerSprint") > 0)
 	{
+		currentState = WALK;
+		GetComponent<Constrain>()->SetHeight(0.f);
 		fSpeed *= 2.5;
 	}
+	if (currentState == CROUCH) fSpeed *= 0.4;
+	if (currentState == PRONE) fSpeed *= 0.1;
 	Vector3 vForward = m_vCameraFront;
 	vForward.y = 0;
 	SceneManager* SceneManager = SceneManager::GetInstance();
@@ -55,15 +60,57 @@ void PlayerScript::Update(double dt)
 		{
 			float totalStrengthOfMovement = InputManager::GetInstance()->GetInputStrength("PlayerMoveForwardBack") * InputManager::GetInstance()->GetInputStrength("PlayerMoveForwardBack") + InputManager::GetInstance()->GetInputStrength("PlayerMoveRightLeft") * InputManager::GetInstance()->GetInputStrength("PlayerMoveRightLeft");
 			totalStrengthOfMovement = sqrt(totalStrengthOfMovement) / 30;
+			totalStrengthOfMovement *= (currentState == WALK ? 1 : (currentState == CROUCH ? 0.8 : 3.2));
 			Cam->AddTorque(0, 0, totalStrengthOfMovement * sin(walkCameraDelay * 6.28));
-			cameraSwayDirection = !cameraSwayDirection;
 		}
+	}
+	if ((InputManager::GetInstance()->GetInputStrength("PlayerCrouchProne") > 0) && !crouchBounce)
+	{
+		crouchBounce = true;
+		if (currentState == WALK)
+		{
+			currentState = CROUCH;
+			GetComponent<Constrain>()->SetHeight(-5.f);
+			trans->Translate(Vector3(0, -5, 0));
+		}
+		else if (currentState == CROUCH)
+		{
+			currentState = PRONE;
+			GetComponent<Constrain>()->SetHeight(-15.f);
+			trans->Translate(Vector3(0, -10, 0));
+		}
+	}
+	if ((InputManager::GetInstance()->GetInputStrength("PlayerCrouchProne") < 0) && !crouchBounce)
+	{
+		crouchBounce = true;
+		if (currentState == CROUCH)
+		{
+			currentState = WALK;
+			GetComponent<Constrain>()->SetHeight(0.f);
+			trans->Translate(Vector3(0, 5, 0));
+		}
+		if (currentState == PRONE)
+		{
+			currentState = CROUCH;
+			GetComponent<Constrain>()->SetHeight(-5.f);
+			trans->Translate(Vector3(0, 10, 0));
+		}
+	}
+	if (crouchBounce && InputManager::GetInstance()->GetInputStrength("PlayerCrouchProne") == 0)
+	{
+		crouchBounce = false;
 	}
 	trans->Translate(Math::Clamp(InputManager::GetInstance()->GetInputStrength("PlayerMoveRightLeft") * fSpeed, -100.f * fSpeed, 100.f * fSpeed) * vRight);
 	if (InputManager::GetInstance()->GetInputStrength("PlayerJump") > 0)
 	{
 		if (GetComponent<Constrain>()->IsOnGround())
-		GetComponent<PhysicsScript>()->SetVelocity(Vector3(0, 42, 0));
+			GetComponent<PhysicsScript>()->SetVelocity(Vector3(0, 42, 0));
+		if (currentState == PRONE)
+		{
+			currentState = WALK;
+			trans->Translate(Vector3(0,15,0));
+			GetComponent<Constrain>()->SetHeight(0.f);
+		}
 	}
 
 	Cam->UpdateYawPitchMouse(InputManager::GetInstance()->GetInputStrength("PlayerLookLeftRight"), InputManager::GetInstance()->GetInputStrength("PlayerLookUpDown"));
@@ -83,4 +130,10 @@ void PlayerScript::Update(double dt)
 	//=================================================================
 	//Vector3 pos = trans->GetPosition();
 	//trans->SetPosition(pos.x, 30.f * ReadHeightMap(DataContainer::GetInstance()->heightMap, pos.x / 500, pos.z / 500), pos.z);
+}
+
+WeaponScript* PlayerScript::GetWeapon()
+{
+	int weaponIndexTruncated = ((((int)weaponIndex) % m_weapons.size()) + m_weapons.size()) % m_weapons.size();
+	return m_weapons[weaponIndexTruncated];
 }

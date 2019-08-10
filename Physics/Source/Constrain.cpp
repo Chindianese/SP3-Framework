@@ -37,6 +37,10 @@ void Constrain::Update(double dt)
 	default:
 		break;
 	}
+	Vector3 pos2 = trans->GetPosition();
+	pos2.x = Math::Clamp(pos2.x, -120.f, 120.f);
+	pos2.z = Math::Clamp(pos2.z, -120.f, 120.f);
+	trans->SetPosition(pos2);
 }
 
 bool Constrain::IsOnGround()
@@ -48,4 +52,9 @@ bool Constrain::IsOnGround()
 	float ground = Scale.y * ReadHeightMap(*heightMap, pos.x / Scale.x, pos.z / Scale.z) +  m_fDistance + 0.02f;
 	return pos.y < ground;
 
+}
+
+void Constrain::SetHeight(float distance)
+{
+	m_fDistance = distance;
 }

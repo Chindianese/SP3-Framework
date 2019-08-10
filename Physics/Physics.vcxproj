@@ -152,15 +152,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AmmoBoxScript.cpp" />
     <ClCompile Include="Source\AnimatedMesh.cpp" />
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\AudioManager.cpp" />
+    <ClCompile Include="Source\BulletCollisionResponse.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\CameraComponent.cpp" />
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\CollisionManager.cpp" />
+    <ClCompile Include="Source\CollisionResponseScript.cpp" />
+    <ClCompile Include="Source\ColorFBO.cpp" />
     <ClCompile Include="Source\ComponentBase.cpp" />
     <ClCompile Include="Source\Constrain.cpp" />
+    <ClCompile Include="Source\CreeperSpawnerScript.cpp" />
     <ClCompile Include="Source\DataContainer.cpp" />
     <ClCompile Include="Source\DepthFBO.cpp" />
+    <ClCompile Include="Source\EnemyScript.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\GameObjectManager.cpp" />
@@ -202,17 +210,25 @@
     <ClCompile Include="Source\WeaponSniperRifleScript.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\AmmoBoxScript.h" />
     <ClInclude Include="Source\AnimatedMesh.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\AudioManager.h" />
+    <ClInclude Include="Source\BulletCollisionResponse.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\CameraComponent.h" />
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\CollisionManager.h" />
+    <ClInclude Include="Source\CollisionResponseScript.h" />
+    <ClInclude Include="Source\ColorFBO.h" />
     <ClInclude Include="Source\ComponentBase.h" />
     <ClInclude Include="Source\ComponentMacros.h" />
     <ClInclude Include="Source\Constrain.h" />
+    <ClInclude Include="Source\CreeperSpawnerScript.h" />
     <ClInclude Include="Source\DataContainer.h" />
     <ClInclude Include="Source\DepthFBO.h" />
+    <ClInclude Include="Source\EnemyScript.h" />
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\GameObjectManager.h" />
@@ -234,6 +250,7 @@
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\MeshController.h" />
+    <ClInclude Include="Source\Minimap.h" />
     <ClInclude Include="Source\MouseManager.h" />
     <ClInclude Include="Source\PhysicsScript.h" />
     <ClInclude Include="Source\PlayerScript.h" />

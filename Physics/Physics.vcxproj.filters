@@ -49,6 +49,14 @@
     <ClCompile Include="Source\WeaponSniperRifleScript.cpp" />
     <ClCompile Include="Source\WeaponRocketLauncherScript.cpp" />
     <ClCompile Include="Source\RocketScript.cpp" />
+    <ClCompile Include="Source\AmmoBoxScript.cpp" />
+    <ClCompile Include="Source\ColorFBO.cpp" />
+    <ClCompile Include="Source\CollisionManager.cpp" />
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\CollisionResponseScript.cpp" />
+    <ClCompile Include="Source\BulletCollisionResponse.cpp" />
+    <ClCompile Include="Source\CreeperSpawnerScript.cpp" />
+    <ClCompile Include="Source\EnemyScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h" />
@@ -106,6 +114,15 @@
     <ClInclude Include="Source\WeaponSniperRifleScript.h" />
     <ClInclude Include="Source\WeaponRocketLauncherScript.h" />
     <ClInclude Include="Source\RocketScript.h" />
+    <ClInclude Include="Source\Minimap.h" />
+    <ClInclude Include="Source\AmmoBoxScript.h" />
+    <ClInclude Include="Source\ColorFBO.h" />
+    <ClInclude Include="Source\CollisionManager.h" />
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\CollisionResponseScript.h" />
+    <ClInclude Include="Source\BulletCollisionResponse.h" />
+    <ClInclude Include="Source\CreeperSpawnerScript.h" />
+    <ClInclude Include="Source\EnemyScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\comg.fragmentshader" />

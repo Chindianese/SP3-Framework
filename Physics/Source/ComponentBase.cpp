@@ -47,11 +47,15 @@ void ComponentBase::SetActive(bool b)
 {
 	m_bActive = b;
 }
+GameObject* ComponentBase::GetParent()
+{
+	return m_parent;
+}
 void ComponentBase::SetParent(GameObject* g)
 {
 	m_parent = g;
 }
-}
+
 bool ComponentBase::IsStarted()
 {
 	return m_bStarted;

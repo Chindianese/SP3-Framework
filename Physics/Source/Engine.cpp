@@ -5,6 +5,7 @@
 #include "Resources.h"
 #include "Utility.h"
 #include "AudioManager.h"
+#include "CollisionManager.h"
 // Select Debug logger user
 // Users are enums located in locator.h
 //#define USER CHENG
@@ -91,7 +92,7 @@ void Engine::Update(double dt)
 			GOList->at(i)->Update(dt);
 		}
 	}
-
+	CollisionManager::GetInstance()->Update(dt);
 	m_Renderer->Update(dt);
 	m_Renderer->Render(CurrentScene);
 	// Log

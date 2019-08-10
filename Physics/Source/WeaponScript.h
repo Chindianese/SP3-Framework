@@ -17,6 +17,7 @@ public:
 	virtual ~WeaponScript();
 	virtual void Update(double dt);
 	virtual void Fire();
+	virtual void PickUpAmmo(int ammoCount = 1);
 	virtual ComponentBase* Clone()
 	{
 		return new WeaponScript(*this);
