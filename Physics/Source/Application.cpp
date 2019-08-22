@@ -120,7 +120,7 @@ void Application::Init()
 	Vector3 WindowPos = StringToVector(Preferences::GetPref(Resources::PreferencesTerm::WindowPosition));
 	m_width = (int)WindowSize.x;
 	m_height = (int)WindowSize.y;
-	m_window = glfwCreateWindow(m_width, m_height, "SP-Framework", NULL, NULL);
+	m_window = glfwCreateWindow(m_width, m_height, "#oof", NULL, NULL);
 	glfwSetWindowPos(m_window, (int)WindowPos.x, (int)WindowPos.y);
 	//If the window couldn't be created
 	if (!m_window)
