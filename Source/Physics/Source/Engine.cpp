@@ -138,6 +138,7 @@ void Engine::Update(double dt)
 	// Remove to be destroyed--------------------------------------------------------------------------------
 	GOM->DestroyQueued();
 	m_clientSystem.Update();
+
 	//--------------------------------------------------------------------------------
 	m_Renderer->Update(dt);
 	m_Renderer->Render(CurrentScene);

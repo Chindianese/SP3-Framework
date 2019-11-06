@@ -13,6 +13,7 @@ ClientSystem::ClientSystem()
 
 ClientSystem::~ClientSystem()
 {
+	WSACleanup();
 }
 
 void __cdecl ReadThread(void* param)
@@ -31,10 +32,12 @@ void __cdecl ReadThread(void* param)
 
 		if (select(0, &fset, 0, 0, &tval) > 0)
 		{
-			if (FD_ISSET(sock, &fset))
+			//if (FD_ISSET(sock, &fset))
 			{
 				char buffer[255]; // buffer that is 255 characters big
 				int length = recv(*sock, buffer, sizeof(buffer), 0);
+				if (length == 0)
+					continue;
 				if (length == SOCKET_ERROR)
 				{
 					std::cout << "Server went offline" << std::endl;
@@ -54,7 +57,6 @@ void ClientSystem::Init()
 	// init
 	name = "user";
 	//Startup
-	WSADATA w;
 	int error = WSAStartup(0x0202, &w);
 	if (error) // Something bad happened
 	{
@@ -62,13 +64,12 @@ void ClientSystem::Init()
 		return;
 	}
 
-	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // Create socket
-	sockaddr_in addr; // the address structure for a TCP socket
+	sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); // Create socket
+
 	addr.sin_family = AF_INET; // Address family Internet
 	addr.sin_port = htons(23456); // Assign port 23456 to this socket
 	addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK); // To local host
 
-	u_long somelong;
 	ioctlsocket(sock, FIONBIO, &somelong);
 
 	// do not check == SOCKET_ERROR here because Async mode will always return SOCKET_ERROR
@@ -84,10 +85,6 @@ void ClientSystem::Update()
 
 void ClientSystem::Send(std::string s)
 {
-	if (_kbhit())
-	{
-		//std::string inputstring;
-		//std::getline(std::cin, inputstring);
-		send(sock, s.c_str(), (int)s.length() + 1, 0);
-	}
+	send(sock, s.c_str(), (int)s.length() + 1, 0);
+	DEFAULT_LOG("sent");
 }

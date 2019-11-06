@@ -15,7 +15,7 @@ using namespace std;
 #include "Locator.h"
 #include "Resources.h"
 
-unsigned LoadShaders(const char * vfp, const char * ffp) {
+unsigned LoadShaders(const char* vfp, const char* ffp) {
 	// .vertexshader file ext is assumed
 	std::string vertex_file_path = Resources::Path::Shader + vfp + ".vertexshader";
 	std::string fragment_file_path = Resources::Path::Shader + ffp + ".fragmentshader";
@@ -53,7 +53,7 @@ unsigned LoadShaders(const char * vfp, const char * ffp) {
 
 	// Compile Vertex Shader
 	//DEFAULT_LOG(std::string("Compiling shader: ") + vertex_file_path);
-	char const * VertexSourcePointer = VertexShaderCode.c_str();
+	char const* VertexSourcePointer = VertexShaderCode.c_str();
 	glShaderSource(VertexShaderID, 1, &VertexSourcePointer, NULL);
 	glCompileShader(VertexShaderID);
 
@@ -63,12 +63,12 @@ unsigned LoadShaders(const char * vfp, const char * ffp) {
 	if (InfoLogLength > 0) {
 		std::vector<char> VertexShaderErrorMessage(InfoLogLength + 1);
 		glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-		DEFAULT_LOG(&VertexShaderErrorMessage[0]);
+		// DEFAULT_LOG(&VertexShaderErrorMessage[0]);
 	}
 
 	// Compile Fragment Shader
 	//DEFAULT_LOG(std::string("Compiling shader: ") + fragment_file_path);
-	char const * FragmentSourcePointer = FragmentShaderCode.c_str();
+	char const* FragmentSourcePointer = FragmentShaderCode.c_str();
 	glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
 	glCompileShader(FragmentShaderID);
 
@@ -78,7 +78,7 @@ unsigned LoadShaders(const char * vfp, const char * ffp) {
 	if (InfoLogLength > 0) {
 		std::vector<char> FragmentShaderErrorMessage(InfoLogLength + 1);
 		glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-		DEFAULT_LOG(&FragmentShaderErrorMessage[0]);
+		// DEFAULT_LOG(&FragmentShaderErrorMessage[0]);
 	}
 
 	// Link the program
@@ -94,7 +94,7 @@ unsigned LoadShaders(const char * vfp, const char * ffp) {
 	if (InfoLogLength > 0) {
 		std::vector<char> ProgramErrorMessage(InfoLogLength + 1);
 		glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-		DEFAULT_LOG(&ProgramErrorMessage[0]);
+		// DEFAULT_LOG(&ProgramErrorMessage[0]);
 	}
 
 	glDeleteShader(VertexShaderID);
