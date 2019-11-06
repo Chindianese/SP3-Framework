@@ -35,6 +35,14 @@ GameObject* Scene::GetGO(std::string s)
 {
 	return DataContainer::GetInstance()->GetGameObject(s);
 }
+GameObject* Scene::AddGO(std::string layer)
+{
+	return m_GOM.AddGameObject(layer);
+}
+Mesh* Scene::GetMesh(std::string s)
+{
+	return DataContainer::GetInstance()->GetMesh(s);
+}
 GameObject* Scene::GetPlayer()
 {
 	return m_Player;

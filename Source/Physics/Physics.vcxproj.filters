@@ -178,6 +178,7 @@
       <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="source\ClientSystem.cpp" />
+    <ClCompile Include="source\InputScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h">
@@ -373,5 +374,6 @@
       <Filter>source</Filter>
     </ClInclude>
     <ClInclude Include="source\ClientSystem.h" />
+    <ClInclude Include="source\InputScript.h" />
   </ItemGroup>
 </Project>

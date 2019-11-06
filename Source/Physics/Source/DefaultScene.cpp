@@ -5,7 +5,8 @@
 #include "RenderComponent.h"
 #include "CameraScript.h"
 #include "Utility.h"
-
+#include "UIButtonComponent.h"
+#include "InputScript.h"
 DefaultScene::DefaultScene()
 {
 }
@@ -53,4 +54,10 @@ void DefaultScene::Init()
 	float size = 100;
 	this->m_Camera->InitOrtho(size);
 	SetCursorEnabled(true);
+	///MAIN
+	go = AddGO("UI");
+	go->TRANS->SetPosition(200, 10, 120);
+	go->AddComponent(new RenderComponent(dataContainer->GetMesh("Text"), ""));
+	go->AddComponent(new InputScript());
+	///ENDMAIN
 }

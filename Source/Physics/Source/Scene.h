@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "CameraComponent.h"
 #include "LightManager.h"
+#include "Mesh.h"
 
 class Scene
 {
@@ -31,4 +32,6 @@ protected:
 	GameObject* m_CameraGO;
 	Camera* m_Camera;
 	GameObject* GetGO(std::string);
+	GameObject* AddGO(std::string layer = "Default");
+	Mesh* GetMesh(std::string s);
 };
