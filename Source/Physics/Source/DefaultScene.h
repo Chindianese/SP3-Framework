@@ -6,7 +6,6 @@
 // Components
 #include "CameraComponent.h"
 #include "DataContainer.h"
-#include "BiomeComponent.h"
 
 class DefaultScene :
 	public Scene

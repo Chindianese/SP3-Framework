@@ -3,9 +3,8 @@
 #include "AudioManager.h"
 #include "ScriptComponent.h"
 #include "WorldValues.h"
-#include "ChunkCollider.h"
-#include "PlayerScript.h"
-#include "AIEntityScript.h"
+#include "Mtx44.h"
+#include "StopWatch.h"
 
 static int nCollisionRuns = 0;
 
@@ -461,10 +460,7 @@ void CollisionManager::Update(GameObjectManager* GOM, int frameCycle)
 	StopWatch timer;
 	timer.Start();
 	std::map<std::string, LayerData*>::iterator it;
-	// TODO multilayer collision?
 	int nCounts = 0;
-	// it->first == key
-	// it->second == value
 	// TODO Child coll
 	std::vector<GameObject*>* GOList = GOM->GetLayerList()->at("Default")->GetGOList();
 	for (unsigned i = 0; i < GOList->size(); ++i)
@@ -474,145 +470,10 @@ void CollisionManager::Update(GameObjectManager* GOM, int frameCycle)
 			continue;
 		if (go1->IsDisabled())
 			continue;
-		if (go1->GetComponent<PlayerScript>(true) != nullptr || frameCycle % 2 == 0)
-		{
-			if (go1->GetComponent<Rigidbody>(true) && go1->GetComponent<Rigidbody>(true)->IsActive())
-			{
-				if (go1->GetComponent<ChunkCollider>(true) == nullptr)
-				{
-					CheckChunkCollision(go1, GOList);
-					CheckCollision(go1, GOList, i);
-					nCounts++;
-				}
-			}
-			// ignore children
-			/*for (unsigned j = 0; j < go1->GetChildList()->size(); ++j)
-			{
-				GameObject* goChild = go1->GetChildList()->at(j);
-				if (!goChild->IsActive())
-					continue;
-				if (goChild->GetComponent<Rigidbody>(true))
-					CheckCollision(goChild, GOList, i);
-			}*/
-		}
 	}
 	std::ostringstream ss;
 	ss << nCounts;
 	timer.Stop();
-	KZ_LOG("[Collision_Time]", " Total time taken: " + timer.GetSTime() + "s for " + ss.str() + "checks");
-}
-
-Rigidbody::ePhysicsTypes CollisionManager::CheckChunkCollision(GameObject* go1, std::vector<GameObject*>* GOList)
-{
-	std::map<Vector3, ChunkData*> chunks;
-	GameObject* collidedChunk = nullptr;
-	TransformComponent* trans1 = go1->GetComponent<TransformComponent>();
-	float halfPlayerSize = trans1->GetScale().x;
-	float halfPlayerHeight = trans1->GetScale().y;
-
-	int nCounts = 0;
-	int ceilX = (int)ceil(halfPlayerSize * 2);
-	int ceilY = (int)ceil(halfPlayerHeight * 2);
-	float xDiff = halfPlayerSize / ceilX;
-	float yDiff = halfPlayerSize / ceilY;
-	Vector3 k = trans1->GetPosition();
-	std::vector<Vector3> vertices;
-	for (int x = 0; x <= ceilX; ++x)
-	{
-		for (int y = 0; y <= ceilY; ++y)
-		{
-			for (int z = 0; z <= ceilX; ++z)
-			{
-				vertices.push_back(k + Vector3(xDiff * x - halfPlayerSize / 2, yDiff * y - halfPlayerHeight, xDiff * z - halfPlayerSize / 2));
-			}
-		}
-	}
-	for (auto it1 = GOList->begin(); it1 != GOList->end(); ++it1)
-	{
-		GameObject* go2 = *it1;
-		Vector3 dist = go2->TRANS->GetPosition() - trans1->GetPosition();
-		if (go2->GetComponent<ChunkCollider>(true) != nullptr)
-		{
-			nCounts++;
-			ChunkData* chunkData = go2->GetComponent<ChunkCollider>()->GetChunk();
-			if (dist.LengthSquared() < chunkData->GetSize().LengthSquared() * 1.01)
-			{
-				for (unsigned i = 0; i < vertices.size(); ++i)
-				{
-					if (go2->GetComponent<ChunkCollider>()->GetChunk()->IsSolid(vertices[i] - go2->GetComponent<TransformComponent>()->GetPosition()))
-					{
-						collidedChunk = go2;
-						chunks.emplace(go2->GetComponent<TransformComponent>()->GetPosition(), go2->GetComponent<ChunkCollider>()->GetChunk());
-						break;
-					}
-				}
-			}
-		}
-		if (chunks.size() == 4) break;
-	}
-	std::ostringstream ss;
-	ss << nCounts;
-	KZ_LOG("[NChunks]", "Total number of chunks: " + ss.str());
-	float shortestMagnitude = 0.1f;
-	Vector3 shortestDirection = Vector3(0, 0, 0);
-	if (chunks.size() != 0)
-		for (int i = 0; i < 27; ++i)
-		{
-			if (i == 13) continue;
-			float forceMagnitudePos = 0;
-			Vector3 forceDirection;
-			forceDirection.x = (float)(i % 3 == 0 ? -1 : (i % 3 == 1 ? 0 : 1));
-			forceDirection.z = (float)((i % 9) / 3 == 0 ? -1 : ((i % 9) / 3 == 1 ? 0 : 1));
-			forceDirection.y = (float)(i / 9 == 0 ? -1 : (i / 9 == 1 ? 0 : 1));
-			forceDirection.Normalize();
-			for (float increment = 1; increment > 0.0001; increment /= 10)
-			{
-				while (true)
-				{
-					bool k = true;
-					for (auto it = chunks.begin(); it != chunks.end(); it++)
-					{
-						ChunkData* cd = it->second;
-						for (unsigned i = 0; i < vertices.size(); ++i)
-						{
-							Vector3 pos = -it->first + vertices[i];
-							if (cd->IsSolid(pos + forceDirection * (forceMagnitudePos + increment)))
-							{
-								k = false;
-								break;
-							}
-						}
-						if (!k) break;
-					}
-					if (k) break;
-					forceMagnitudePos += increment;
-				}
-			}
-			if (i == 0 || shortestMagnitude > forceMagnitudePos)
-			{
-				shortestMagnitude = forceMagnitudePos;
-				shortestDirection = forceDirection;
-			}
-		}
-	if (shortestDirection.IsZero()) return Rigidbody::ePhysicsTypes::NONE;
-	go1->GetComponent<TransformComponent>()->Translate(shortestDirection * shortestMagnitude);
-	Vector3 vel = go1->RIGID->GetVel();
-	if (shortestDirection.x != 0) vel.x *= -0.9f;
-	if (shortestDirection.y < 0 && vel.y > 0) vel.y = 0;
-	else if (shortestDirection.y > 0 && vel.y < 0) vel.y = 0;
-	if (shortestDirection.z != 0) vel.z *= -0.9f;
-	go1->GetComponent<Rigidbody>()->QueueVel(vel - go1->RIGID->GetVel());
-	if (go1->GetComponent<ScriptComponent>() != nullptr)
-		go1->GetComponent<ScriptComponent>()->Collide(collidedChunk);
-	if (go1->GetComponent<EntityScript>(true) && shortestDirection.y == 1)
-	{
-		go1->GetComponent<EntityScript>()->SetCanJump(true);
-	}
-	if (go1->GetComponent<AIEntityScript>(true) && (shortestDirection.x != 0 || shortestDirection.z != 0) && shortestDirection.y >= 0)
-	{
-		go1->GetComponent<AIEntityScript>()->SetAgainstWall(true);
-	}
-	return Rigidbody::ePhysicsTypes::CHUNK;
 }
 
 void CollisionManager::CheckCollision(GameObject* go1, std::vector<GameObject*>* GOList, int i)
@@ -626,8 +487,6 @@ void CollisionManager::CheckCollision(GameObject* go1, std::vector<GameObject*>*
 			continue;
 		if (!go2->GetComponent<Rigidbody>(true)->IsActive())
 			continue;
-
-		if (go2->GetComponent<ChunkCollider>(true)) continue;
 		GameObject* goA = go1;
 		GameObject* goB = go2;
 		// force go1 to be a ball

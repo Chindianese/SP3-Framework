@@ -13,16 +13,12 @@
 #include "WorldValues.h"
 #include "InputManager.h"
 #include "MouseManager.h"
-#include "EntityLibrary.h"
-#include "PlayerData.h"
 // Start Scene
 #include "DefaultScene.h"
-#include "MainMenu.h"
-#include "LoginScene.h"
 RenderingManager* Engine::m_Renderer;
 #define TIMINGS false
 
-#define SCENE LoginScene
+#define SCENE DefaultScene
 
 Engine::Engine()
 {
@@ -134,7 +130,6 @@ void Engine::Update(double dt)
 		CHENG_LOG("Time to check collision: ", STOP_S);
 	s.Reset();
 	sw.Stop();
-	KZ_LOG("[Collision_Time_2]", " CollisionManager.Update() took " + sw.GetSTime() + "s");
 	// Update Observers
 	GenericSubject::GetInstance()->NotifyObservers(&GOObserverList);
 	// Remove to be destroyed--------------------------------------------------------------------------------
@@ -194,7 +189,7 @@ void Engine::CheckGOForObserver(GameObject* go, std::vector<GameObject*>* GOList
 		CheckGOForObserver(GOChild, GOList);
 	}
 }
-RenderingManagerBase * Engine::GetRenderManager()
+RenderingManagerBase* Engine::GetRenderManager()
 {
 	return m_Renderer;
 }
@@ -211,7 +206,4 @@ void Engine::Exit()
 	Preferences::Clear();
 	Time::DeleteInstance();
 	GenericSubject::DeleteInstance();
-	EntityLibrary::DeleteInstance();
-	PlayerData::GetInstance()->Save();
-	PlayerData::DeleteInstance();
 }

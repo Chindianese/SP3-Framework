@@ -1,309 +1,378 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Source\AbilityBase.cpp" />
-    <ClCompile Include="Source\AbilityDash.cpp" />
-    <ClCompile Include="Source\AbilityGrenade.cpp" />
-    <ClCompile Include="Source\AbilityHeal.cpp" />
-    <ClCompile Include="Source\AbilityScript.cpp" />
-    <ClCompile Include="Source\AbilitySlowTime.cpp" />
-    <ClCompile Include="Source\AdvancedParticleSpawnerScript.cpp" />
-    <ClCompile Include="Source\AIEntityScript.cpp" />
-    <ClCompile Include="Source\AIState.cpp" />
-    <ClCompile Include="Source\AIStatesList.cpp" />
-    <ClCompile Include="Source\AnimatedMesh.cpp" />
-    <ClCompile Include="Source\Application.cpp" />
-    <ClCompile Include="Source\AudioManager.cpp" />
-    <ClCompile Include="Source\AudioObserver.cpp" />
-    <ClCompile Include="Source\Behaviour.cpp" />
-    <ClCompile Include="Source\BiomeComponent.cpp" />
-    <ClCompile Include="Source\BirdWingScript.cpp" />
-    <ClCompile Include="Source\BlackHoleAugment.cpp" />
-    <ClCompile Include="Source\BlackholeScript.cpp" />
-    <ClCompile Include="Source\BossCombat.cpp" />
-    <ClCompile Include="Source\BossObserver.cpp" />
-    <ClCompile Include="Source\BossObserverCom.cpp" />
-    <ClCompile Include="Source\BossShockwaveState.cpp" />
-    <ClCompile Include="Source\BossSpawnerScript.cpp" />
-    <ClCompile Include="Source\Camera.cpp" />
-    <ClCompile Include="Source\CameraComponent.cpp" />
-    <ClCompile Include="Source\CameraScript.cpp" />
-    <ClCompile Include="Source\CheatScript.cpp" />
-    <ClCompile Include="Source\ChunkCollider.cpp" />
-    <ClCompile Include="Source\ChunkData.cpp" />
-    <ClCompile Include="Source\ChunkEvent.cpp" />
-    <ClCompile Include="Source\CollisionManager.cpp" />
-    <ClCompile Include="Source\ColorFBO.cpp" />
-    <ClCompile Include="Source\Command.cpp" />
-    <ClCompile Include="Source\Component.cpp" />
-    <ClCompile Include="Source\ComponentBase.cpp" />
-    <ClCompile Include="Source\Constrain.cpp" />
-    <ClCompile Include="Source\CrouchingState.cpp" />
-    <ClCompile Include="Source\DataContainer.cpp" />
-    <ClCompile Include="Source\DefaultScene.cpp" />
-    <ClCompile Include="Source\DepthFBO.cpp" />
-    <ClCompile Include="Source\DestructibleEntityScript.cpp" />
-    <ClCompile Include="Source\Engine.cpp" />
-    <ClCompile Include="Source\EntityScript.cpp" />
-    <ClCompile Include="Source\EntityValues.cpp" />
-    <ClCompile Include="Source\EntityLibrary.cpp" />
-    <ClCompile Include="Source\ExplodeAugment.cpp" />
-    <ClCompile Include="Source\FleeState.cpp" />
-    <ClCompile Include="Source\FlipEntityScript.cpp" />
-    <ClCompile Include="Source\FoilageGeneratorComponent.cpp" />
-    <ClCompile Include="Source\FPSScript.cpp" />
-    <ClCompile Include="Source\GameObject.cpp" />
-    <ClCompile Include="Source\GameObjectManager.cpp" />
-    <ClCompile Include="Source\GenericSubject.cpp" />
-    <ClCompile Include="Source\GrenadeScript.cpp" />
-    <ClCompile Include="Source\HealthAugment.cpp" />
-    <ClCompile Include="Source\HeightMapData.cpp" />
-    <ClCompile Include="Source\IdleState.cpp" />
-    <ClCompile Include="Source\InputBinding.cpp" />
-    <ClCompile Include="Source\InputManager.cpp" />
-    <ClCompile Include="Source\DebrisSpawningScript.cpp" />
-    <ClCompile Include="Source\InteractableObCom.cpp" />
-    <ClCompile Include="Source\InteractablesObserver.cpp" />
-    <ClCompile Include="Source\InteractionBaseScript.cpp" />
-    <ClCompile Include="Source\InventoryScript.cpp" />
-    <ClCompile Include="Source\KeyboardManager.cpp" />
-    <ClCompile Include="Source\LayerData.cpp" />
-    <ClCompile Include="Source\LightManager.cpp" />
-    <ClCompile Include="Source\LoadHmap.cpp" />
-    <ClCompile Include="Source\LoadOBJ.cpp" />
-    <ClCompile Include="Source\LoadTGA.cpp" />
-    <ClCompile Include="Source\Locator.cpp" />
-    <ClCompile Include="Source\LogData.cpp" />
-    <ClCompile Include="Source\Logger.cpp" />
-    <ClCompile Include="Source\LootScript.cpp" />
-    <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\MainMenu.cpp" />
-    <ClCompile Include="Source\MapSpawningScript.cpp" />
-    <ClCompile Include="Source\MeleeCombatState.cpp" />
-    <ClCompile Include="Source\MenuButtonsScript.cpp" />
-    <ClCompile Include="Source\Mesh.cpp" />
-    <ClCompile Include="Source\MeshBiomed.cpp" />
-    <ClCompile Include="Source\MeshBuilder.cpp" />
-    <ClCompile Include="Source\MeshController.cpp" />
-    <ClCompile Include="Source\Message.cpp" />
-    <ClCompile Include="Source\MouseManager.cpp" />
-    <ClCompile Include="Source\MovementCommand.cpp" />
-    <ClCompile Include="Source\ObserverBase.cpp" />
-    <ClCompile Include="Source\ObserverComponent.cpp" />
-    <ClCompile Include="Source\ParticleObserver.cpp" />
-    <ClCompile Include="Source\ParticleScript.cpp" />
-    <ClCompile Include="Source\ParticleSpawnerScript.cpp" />
-    <ClCompile Include="Source\PhysicsMaterial.cpp" />
-    <ClCompile Include="Source\PlayerStateList.cpp" />
-    <ClCompile Include="Source\WinLoseScript.cpp" />
-    <ClCompile Include="Source\PlayerScript.cpp" />
-    <ClCompile Include="Source\PlayerState.cpp" />
-    <ClCompile Include="Source\PlayerStatsScript.cpp" />
-    <ClCompile Include="Source\Preferences.cpp" />
-    <ClCompile Include="Source\ProjectileScript.cpp" />
-    <ClCompile Include="Source\RangedState.cpp" />
-    <ClCompile Include="Source\ReloadUIScript.cpp" />
-    <ClCompile Include="Source\ReloadingAugment.cpp" />
-    <ClCompile Include="Source\RenderComponent.cpp" />
-    <ClCompile Include="Source\RenderingManager.cpp" />
-    <ClCompile Include="Source\RenderingManagerBase.cpp" />
-    <ClCompile Include="Source\Resources.cpp" />
-    <ClCompile Include="Source\ReticleScript.cpp" />
-    <ClCompile Include="Source\Rigidbody.cpp" />
-    <ClCompile Include="Source\ScalePatternScript.cpp" />
-    <ClCompile Include="Source\Scene.cpp" />
-    <ClCompile Include="Source\SceneManager.cpp" />
-    <ClCompile Include="Source\ScriptComponent.cpp" />
-    <ClCompile Include="Source\shader.cpp" />
-    <ClCompile Include="Source\SpawnLootScript.cpp" />
-    <ClCompile Include="Source\SprintingState.cpp" />
-    <ClCompile Include="Source\StandingState.cpp" />
-    <ClCompile Include="Source\State.cpp" />
-    <ClCompile Include="Source\Stats.cpp" />
-    <ClCompile Include="Source\StopWatch.cpp" />
-    <ClCompile Include="Source\SuicideNoteScript.cpp" />
-    <ClCompile Include="Source\Time.cpp" />
-    <ClCompile Include="Source\TopDownState.cpp" />
-    <ClCompile Include="Source\TransformComponent.cpp" />
-    <ClCompile Include="Source\UIButtonComponent.cpp" />
-    <ClCompile Include="Source\Utility.cpp" />
-    <ClCompile Include="Source\WanderState.cpp" />
-    <ClCompile Include="Source\Augment.cpp" />
-    <ClCompile Include="Source\WeaponPartScript.cpp" />
-    <ClCompile Include="Source\GunScript.cpp" />
-    <ClCompile Include="Source\WorldValues.cpp" />
-    <ClCompile Include="Source\PlayerData.cpp" />
-    <ClCompile Include="Source\LoginScene.cpp" />
-    <ClCompile Include="Source\LoginScript.cpp" />
-    <ClCompile Include="Source\LoginButtonScript.cpp" />
-    <ClCompile Include="Source\CoinPickupScript.cpp" />
-    <ClCompile Include="Source\CoinUIScript.cpp" />
+    <Filter Include="source">
+      <UniqueIdentifier>{ce1d9ba1-a47c-4063-937a-3ab1cee9e135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HealthAugment.h" />
-    <ClInclude Include="Source\AbilityBase.h" />
-    <ClInclude Include="Source\AbilityDash.h" />
-    <ClInclude Include="Source\AbilityGrenade.h" />
-    <ClInclude Include="Source\AbilityHeal.h" />
-    <ClInclude Include="Source\AbilityScript.h" />
-    <ClInclude Include="Source\AbilitySlowTime.h" />
-    <ClInclude Include="Source\AIEntityScript.h" />
-    <ClInclude Include="Source\AdvancedParticleSpawnerScript.h" />
-    <ClInclude Include="Source\AIState.h" />
-    <ClInclude Include="Source\AIStatesList.h" />
-    <ClInclude Include="Source\AnimatedMesh.h" />
-    <ClInclude Include="Source\Animation.h" />
-    <ClInclude Include="Source\Application.h" />
-    <ClInclude Include="Source\AudioManager.h" />
-    <ClInclude Include="Source\AudioObserver.h" />
-    <ClInclude Include="Source\Behaviour.h" />
-    <ClInclude Include="Source\BirdWingScript.h" />
-    <ClInclude Include="Source\BlackHoleAugment.h" />
-    <ClInclude Include="Source\BlackholeScript.h" />
-    <ClInclude Include="Source\BossCombat.h" />
-    <ClInclude Include="Source\BossObserver.h" />
-    <ClInclude Include="Source\BossObserverCom.h" />
-    <ClInclude Include="Source\BossShockwaveState.h" />
-    <ClInclude Include="Source\BossSpawnerScript.h" />
-    <ClInclude Include="Source\Camera.h" />
-    <ClInclude Include="Source\CameraComponent.h" />
-    <ClInclude Include="Source\CameraScript.h" />
-    <ClInclude Include="Source\CheatScript.h" />
-    <ClInclude Include="Source\ChunkCollider.h" />
-    <ClInclude Include="Source\ChunkData.h" />
-    <ClInclude Include="Source\ChunkEvent.h" />
-    <ClInclude Include="Source\CollisionManager.h" />
-    <ClInclude Include="Source\ColorFBO.h" />
-    <ClInclude Include="Source\Command.h" />
-    <ClInclude Include="Source\Component.h" />
-    <ClInclude Include="Source\ComponentBase.h" />
-    <ClInclude Include="Source\ComponentMacros.h" />
-    <ClInclude Include="Source\Constrain.h" />
-    <ClInclude Include="Source\CrouchingState.h" />
-    <ClInclude Include="Source\DataContainer.h" />
-    <ClInclude Include="Source\DefaultScene.h" />
-    <ClInclude Include="Source\DepthFBO.h" />
-    <ClInclude Include="Source\DestructibleEntityScript.h" />
-    <ClInclude Include="Source\Engine.h" />
-    <ClInclude Include="Source\EntityScript.h" />
-    <ClInclude Include="Source\EntityValues.h" />
-    <ClInclude Include="Source\EntityLibrary.h" />
-    <ClInclude Include="Source\ExplodeAugment.h" />
-    <ClInclude Include="Source\FleeState.h" />
-    <ClInclude Include="Source\FlipEntityScript.h" />
-    <ClInclude Include="Source\FoilageGeneratorComponent.h" />
-    <ClInclude Include="Source\FPSScript.h" />
-    <ClInclude Include="Source\GameObject.h" />
-    <ClInclude Include="Source\GameObjectManager.h" />
-    <ClInclude Include="Source\GenericSubject.h" />
-    <ClInclude Include="Source\GrenadeScript.h" />
-    <ClInclude Include="Source\HealthAugment.h" />
-    <ClInclude Include="Source\HeightMapData.h" />
-    <ClInclude Include="Source\IdleState.h" />
-    <ClInclude Include="Source\InputBinding.h" />
-    <ClInclude Include="Source\InputDeviceManager.h" />
-    <ClInclude Include="Source\InputManager.h" />
-    <ClInclude Include="Source\DebrisSpawningScript.h" />
-    <ClInclude Include="Source\InteractableObCom.h" />
-    <ClInclude Include="Source\InteractablesObserver.h" />
-    <ClInclude Include="Source\InteractionBaseScript.h" />
-    <ClInclude Include="Source\InventoryScript.h" />
-    <ClInclude Include="Source\KeyboardManager.h" />
-    <ClInclude Include="Source\LayerData.h" />
-    <ClInclude Include="Source\Light.h" />
-    <ClInclude Include="Source\LightManager.h" />
-    <ClInclude Include="Source\LoadHmap.h" />
-    <ClInclude Include="Source\LoadOBJ.h" />
-    <ClInclude Include="Source\LoadTGA.h" />
-    <ClInclude Include="Source\Locator.h" />
-    <ClInclude Include="Source\LogData.h" />
-    <ClInclude Include="Source\Logger.h" />
-    <ClInclude Include="Source\LootScript.h" />
-    <ClInclude Include="Source\MainMenu.h" />
-    <ClInclude Include="Source\MapSpawningScript.h" />
-    <ClInclude Include="Source\Material.h" />
-    <ClInclude Include="Source\MeleeCombatState.h" />
-    <ClInclude Include="Source\MenuButtonsScript.h" />
-    <ClInclude Include="Source\Mesh.h" />
-    <ClInclude Include="Source\MeshBiomed.h" />
-    <ClInclude Include="Source\MeshBuilder.h" />
-    <ClInclude Include="Source\MeshController.h" />
-    <ClInclude Include="Source\Message.h" />
-    <ClInclude Include="Source\MouseManager.h" />
-    <ClInclude Include="Source\MovementCommand.h" />
-    <ClInclude Include="Source\ObserverBase.h" />
-    <ClInclude Include="Source\ObserverComponent.h" />
-    <ClInclude Include="Source\ParticleObserver.h" />
-    <ClInclude Include="Source\ParticleScript.h" />
-    <ClInclude Include="Source\ParticleSpawnerScript.h" />
-    <ClInclude Include="Source\PhysicsMaterial.h" />
-    <ClInclude Include="Source\PlayerStateList.h" />
-    <ClInclude Include="Source\WinLoseScript.h" />
-    <ClInclude Include="Source\PlayerScript.h" />
-    <ClInclude Include="Source\PlayerState.h" />
-    <ClInclude Include="Source\PlayerStatsScript.h" />
-    <ClInclude Include="Source\Preferences.h" />
-    <ClInclude Include="Source\BiomeComponent.h" />
-    <ClInclude Include="Source\ProjectileScript.h" />
-    <ClInclude Include="Source\RangedState.h" />
-    <ClInclude Include="Source\ReloadUIScript.h" />
-    <ClInclude Include="Source\ReloadingAugment.h" />
-    <ClInclude Include="Source\RenderComponent.h" />
-    <ClInclude Include="Source\Renderer.h" />
-    <ClInclude Include="Source\RenderingManager.h" />
-    <ClInclude Include="Source\RenderingManagerBase.h" />
-    <ClInclude Include="Source\Resources.h" />
-    <ClInclude Include="Source\ReticleScript.h" />
-    <ClInclude Include="Source\Rigidbody.h" />
-    <ClInclude Include="Source\ScalePatternScript.h" />
-    <ClInclude Include="Source\Scene.h" />
-    <ClInclude Include="Source\SceneManager.h" />
-    <ClInclude Include="Source\ScriptComponent.h" />
-    <ClInclude Include="Source\shader.hpp" />
-    <ClInclude Include="Source\Singleton.h" />
-    <ClInclude Include="Source\SpawnLootScript.h" />
-    <ClInclude Include="Source\SprintingState.h" />
-    <ClInclude Include="Source\StandingState.h" />
-    <ClInclude Include="Source\State.h" />
-    <ClInclude Include="Source\Stats.h" />
-    <ClInclude Include="Source\StopWatch.h" />
-    <ClInclude Include="Source\SuicideNoteScript.h" />
-    <ClInclude Include="Source\Time.h" />
-    <ClInclude Include="Source\TopDownState.h" />
-    <ClInclude Include="Source\TransformComponent.h" />
-    <ClInclude Include="Source\UIButtonComponent.h" />
-    <ClInclude Include="Source\Utility.h" />
-    <ClInclude Include="Source\Vertex.h" />
-    <ClInclude Include="Source\WanderState.h" />
-    <ClInclude Include="Source\Augment.h" />
-    <ClInclude Include="Source\WeaponPartScript.h" />
-    <ClInclude Include="Source\GunScript.h" />
-    <ClInclude Include="Source\WorldValues.h" />
-    <ClInclude Include="Source\PlayerData.h" />
-    <ClInclude Include="Source\LoginScene.h" />
-    <ClInclude Include="Source\LoginScript.h" />
-    <ClInclude Include="Source\LoginButtonScript.h" />
-    <ClInclude Include="Source\CoinPickupScript.h" />
-    <ClInclude Include="Source\CoinUIScript.h" />
+    <ClCompile Include="Source\AnimatedMesh.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Application.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AudioManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AudioObserver.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CameraComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CameraScript.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CollisionManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ColorFBO.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ComponentBase.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DataContainer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DefaultScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DepthFBO.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FPSScript.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObjectManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GenericSubject.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputBinding.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\KeyboardManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LayerData.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LightManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadHmap.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadOBJ.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LoadTGA.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Locator.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LogData.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Logger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mesh.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshBiomed.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshBuilder.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MeshController.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Message.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MouseManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObserverBase.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObserverComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleScript.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ParticleSpawnerScript.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsMaterial.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Preferences.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderingManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderingManagerBase.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rigidbody.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ScriptComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\shader.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StopWatch.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Time.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TransformComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\UIButtonComponent.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\WorldValues.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\chunks\1x1_archway.chunk" />
-    <None Include="Content\chunks\1x1_bazaar1.chunk" />
-    <None Include="Content\chunks\1x1_smallhouse.chunk" />
-    <None Include="Content\chunks\1x1_walledoff.chunk" />
-    <None Include="Content\chunks\1x1_wellspring.chunk" />
-    <None Include="Content\chunks\1x2_goldmine.chunk" />
-    <None Include="Content\keybinds.cfg" />
-    <None Include="Content\Map.chunk" />
-    <None Include="Content\preferences.ini" />
-    <None Include="Content\shaders\FancyFog.fragmentshader" />
-    <None Include="Content\shaders\FancyFog.vertexshader" />
-    <None Include="Content\shaders\Post.fragmentshader" />
-    <None Include="Content\shaders\Post.vertexshader" />
-    <None Include="Shader\water.fragmentshader" />
-    <None Include="Shader\water.vertexshader" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Content\shaders\EffectCRT.fragmentshader" />
+    <ClInclude Include="Source\AnimatedMesh.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Animation.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Application.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AudioManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AudioObserver.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CameraScript.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CollisionManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColorFBO.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ComponentBase.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ComponentMacros.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DataContainer.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DefaultScene.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DepthFBO.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FPSScript.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObject.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObjectManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GenericSubject.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputBinding.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputDeviceManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\KeyboardManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LayerData.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Light.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LightManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadHmap.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadOBJ.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LoadTGA.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Locator.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LogData.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Logger.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mesh.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshBuilder.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshController.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Message.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MouseManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObserverBase.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObserverComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleScript.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ParticleSpawnerScript.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsMaterial.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Preferences.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderingManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderingManagerBase.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rigidbody.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneManager.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScriptComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\shader.hpp">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Singleton.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StopWatch.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Time.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TransformComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\UIButtonComponent.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vertex.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\WorldValues.h">
+      <Filter>source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

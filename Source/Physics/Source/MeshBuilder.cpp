@@ -21,7 +21,7 @@ Then generate the VBO/IBO and store them in Mesh object
 \return Pointer to mesh storing VBO/IBO of reference axes
 */
 /******************************************************************************/
-Mesh* MeshBuilder::GenerateAxes(const std::string &meshName, float lengthX, float lengthY, float lengthZ)
+Mesh* MeshBuilder::GenerateAxes(const std::string& meshName, float lengthX, float lengthY, float lengthZ)
 {
 	Vertex v;
 	std::vector<Vertex> vertex_buffer_data;
@@ -52,7 +52,7 @@ Mesh* MeshBuilder::GenerateAxes(const std::string &meshName, float lengthX, floa
 	index_buffer_data.push_back(4);
 	index_buffer_data.push_back(5);
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -78,7 +78,7 @@ Then generate the VBO/IBO and store them in Mesh object
 \return Pointer to mesh storing VBO/IBO of quad
 */
 /******************************************************************************/
-Mesh* MeshBuilder::GenerateQuad(const std::string &meshName, Color color, float length)
+Mesh* MeshBuilder::GenerateQuad(const std::string& meshName, Color color, float length)
 {
 	Vertex v;
 	std::vector<Vertex> vertex_buffer_data;
@@ -112,7 +112,7 @@ Mesh* MeshBuilder::GenerateQuad(const std::string &meshName, Color color, float 
 	index_buffer_data.push_back(2);
 	index_buffer_data.push_back(0);
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -158,7 +158,7 @@ Mesh* MeshBuilder::GenerateQuadLeftCentered(Color color, float length)
 	index_buffer_data.push_back(2);
 	index_buffer_data.push_back(0);
 
-	Mesh *mesh = new Mesh("Misc");
+	Mesh* mesh = new Mesh("Misc");
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -185,7 +185,7 @@ Then generate the VBO/IBO and store them in Mesh object
 \return Pointer to mesh storing VBO/IBO of cube
 */
 /******************************************************************************/
-Mesh* MeshBuilder::GenerateCube(const std::string &meshName, Color color, float length)
+Mesh* MeshBuilder::GenerateCube(const std::string& meshName, Color color, float length)
 {
 	Vertex v;
 	std::vector<Vertex> vertex_buffer_data;
@@ -261,7 +261,7 @@ Mesh* MeshBuilder::GenerateCube(const std::string &meshName, Color color, float 
 	index_buffer_data.push_back(0);
 	index_buffer_data.push_back(5);
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -274,7 +274,7 @@ Mesh* MeshBuilder::GenerateCube(const std::string &meshName, Color color, float 
 	return mesh;
 }
 
-Mesh* MeshBuilder::GenerateRing(const std::string &meshName, Color color, unsigned numSlice, float outerR, float innerR)
+Mesh* MeshBuilder::GenerateRing(const std::string& meshName, Color color, unsigned numSlice, float outerR, float innerR)
 {
 	std::vector<Vertex> vertex_buffer_data;
 	std::vector<GLuint> index_buffer_data;
@@ -305,7 +305,7 @@ Mesh* MeshBuilder::GenerateRing(const std::string &meshName, Color color, unsign
 		//index_buffer_data.push_back(2 * slice + 2);
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -332,7 +332,7 @@ float sphereZ(float phi, float theta)
 	return cos(Math::DegreeToRadian(phi)) * sin(Math::DegreeToRadian(theta));
 }
 
-Mesh* MeshBuilder::GenerateSphere(const std::string &meshName, Color color, unsigned numStack, unsigned numSlice, float radius)
+Mesh* MeshBuilder::GenerateSphere(const std::string& meshName, Color color, unsigned numStack, unsigned numSlice, float radius)
 {
 	std::vector<Vertex> vertex_buffer_data;
 	std::vector<GLuint> index_buffer_data;
@@ -367,7 +367,7 @@ Mesh* MeshBuilder::GenerateSphere(const std::string &meshName, Color color, unsi
 		}
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	mesh->mode = Mesh::DRAW_TRIANGLE_STRIP;
 
@@ -381,7 +381,7 @@ Mesh* MeshBuilder::GenerateSphere(const std::string &meshName, Color color, unsi
 	return mesh;
 }
 
-Mesh* MeshBuilder::GenerateCone(const std::string &meshName, Color color, unsigned numSlice, float radius, float height)
+Mesh* MeshBuilder::GenerateCone(const std::string& meshName, Color color, unsigned numSlice, float radius, float height)
 {
 	std::vector<Vertex> vertex_buffer_data;
 	std::vector<GLuint> index_buffer_data;
@@ -411,7 +411,7 @@ Mesh* MeshBuilder::GenerateCone(const std::string &meshName, Color color, unsign
 		index_buffer_data.push_back(slice * 2 + 1);
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	mesh->mode = Mesh::DRAW_TRIANGLE_STRIP;
 
@@ -465,11 +465,8 @@ Mesh* MeshBuilder::GenerateOBJ(std::string name, bool isMeshBiomed)
 
 	IndexVBO(vertices, uvs, normals, index_buffer_data, vertex_buffer_data, { 1,1,1 });
 
-	Mesh *mesh;
-	if (!isMeshBiomed)
-		mesh = new Mesh(name);
-	else
-		mesh = new MeshBiomed(name);
+	Mesh* mesh;
+	mesh = new Mesh(name);
 
 	mesh->mode = Mesh::DRAW_TRIANGLES;
 
@@ -483,7 +480,7 @@ Mesh* MeshBuilder::GenerateOBJ(std::string name, bool isMeshBiomed)
 	return mesh;
 }
 
-Mesh* MeshBuilder::GenerateText(const std::string &meshName, unsigned numRow, unsigned numCol)
+Mesh* MeshBuilder::GenerateText(const std::string& meshName, unsigned numRow, unsigned numCol)
 {
 	Vertex v;
 	std::vector<Vertex> vertex_buffer_data;
@@ -524,7 +521,7 @@ Mesh* MeshBuilder::GenerateText(const std::string &meshName, unsigned numRow, un
 		}
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -537,7 +534,7 @@ Mesh* MeshBuilder::GenerateText(const std::string &meshName, unsigned numRow, un
 	return mesh;
 }
 
-Mesh* MeshBuilder::GenerateTerrain(const std::string &meshName, std::string file_path, std::vector<unsigned char> &heightMap, Vector3 terrainScale, bool isMeshBiomed)
+Mesh* MeshBuilder::GenerateTerrain(const std::string& meshName, std::string file_path, std::vector<unsigned char>& heightMap, Vector3 terrainScale, bool isMeshBiomed)
 {
 	file_path = Resources::Path::HeightMap + file_path + ".raw";
 	Vertex v;
@@ -832,11 +829,8 @@ Mesh* MeshBuilder::GenerateTerrain(const std::string &meshName, std::string file
 		}
 	}
 
-	Mesh *mesh;
-	if (isMeshBiomed)
-		mesh = new MeshBiomed(meshName);
-	else
-		mesh = new Mesh(meshName);
+	Mesh* mesh;
+	mesh = new Mesh(meshName);
 
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
@@ -848,7 +842,7 @@ Mesh* MeshBuilder::GenerateTerrain(const std::string &meshName, std::string file
 
 	return mesh;
 }
-Mesh* MeshBuilder::GenerateTerrainTerrace(const std::string &meshName, std::string file_path, std::vector<unsigned char> &heightMap, Vector3 terrainScale)
+Mesh* MeshBuilder::GenerateTerrainTerrace(const std::string& meshName, std::string file_path, std::vector<unsigned char>& heightMap, Vector3 terrainScale)
 {
 	file_path = Resources::Path::HeightMap + file_path + ".raw";
 	Vertex v;
@@ -1147,7 +1141,7 @@ Mesh* MeshBuilder::GenerateTerrainTerrace(const std::string &meshName, std::stri
 		}
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->indexBuffer);
@@ -1158,7 +1152,7 @@ Mesh* MeshBuilder::GenerateTerrainTerrace(const std::string &meshName, std::stri
 
 	return mesh;
 }
-Mesh* MeshBuilder::GenerateSkyPlane(const std::string &meshName, Color color, int slices, float PlanetRadius, float AtmosphereRadius, float hTile, float vTile)
+Mesh* MeshBuilder::GenerateSkyPlane(const std::string& meshName, Color color, int slices, float PlanetRadius, float AtmosphereRadius, float hTile, float vTile)
 {
 	Vertex v;
 	std::vector<Vertex> vertex_buffer_data;
@@ -1168,7 +1162,7 @@ Mesh* MeshBuilder::GenerateSkyPlane(const std::string &meshName, Color color, in
 	slices = Math::Clamp(slices, 1, 256);
 
 	// Calculate some values we will need
-	float planeSize = 2.0f * (float)sqrtf((AtmosphereRadius*AtmosphereRadius) + (PlanetRadius*PlanetRadius));
+	float planeSize = 2.0f * (float)sqrtf((AtmosphereRadius * AtmosphereRadius) + (PlanetRadius * PlanetRadius));
 
 	float delta = planeSize / (float)slices; //Divide plane evenly
 
@@ -1224,7 +1218,7 @@ Mesh* MeshBuilder::GenerateSkyPlane(const std::string &meshName, Color color, in
 		}
 	}
 
-	Mesh *mesh = new Mesh(meshName);
+	Mesh* mesh = new Mesh(meshName);
 
 	mesh->mode = Mesh::DRAW_TRIANGLES;
 
@@ -1292,7 +1286,7 @@ AnimatedMesh* MeshBuilder::GenerateAnimatedMesh(std::string sMeshName, int numRo
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_buffer_data.size() * sizeof(GLuint), &index_buffer_data[0], GL_STATIC_DRAW);
 
 	mesh->indexSize = index_buffer_data.size();
-	AnimatedMesh *anim = new AnimatedMesh(sMeshName, numRow, numCol, start, end, time, loop, mesh);
+	AnimatedMesh* anim = new AnimatedMesh(sMeshName, numRow, numCol, start, end, time, loop, mesh);
 	return anim;
 }
 
@@ -1302,204 +1296,204 @@ TexCoord GenTexCoord(int x, int u, int k, int l)
 	return TexCoord((float)(x % u + k * 0.993 + 0.0035) / u, 1 - (float)(x / u + l * 0.993 + 0.0035) / u);
 }
 
-//@author Nam Kai Zhe
-Mesh * MeshBuilder::GenerateChunk(const std::string & meshName, int xSize, int ySize, int zSize, std::vector<unsigned short>* chunk, bool biomed)
-{
-	xSize *= 16;
-	zSize *= 16;
-	Vertex v;
-	std::vector<Vertex> vertex_buffer_data;
-	std::vector<GLuint> index_buffer_data;
-	int index = 0;
-	for (int x = 0; x < xSize; x++)
-	{
-		for (int z = 0; z < zSize; z++)
-		{
-			for (int y = 0; y < ySize; y++)
-			{
-				if ((*chunk)[x + z * xSize + y * xSize*zSize] != 0)
-				{
-					if (x == 0 || (*chunk)[x - 1 + z * xSize + y * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(-1, 0, 0);
-						v.pos = Position((float)x, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(-1, 0, 0);
-						v.pos = Position((float)x, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(-1, 0, 0);
-						v.pos = Position((float)x, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(-1, 0, 0);
-						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 2);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 0);
-						index += 4;
-					}
-					if (x == xSize - 1 || (*chunk)[x + 1 + z * xSize + y * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(1, 0, 0);
-						v.pos = Position((float)x + 1, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(1, 0, 0);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(1, 0, 0);
-						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(1, 0, 0);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 2);
-						index += 4;
-					}
-					if (y == 0 || (*chunk)[x + z * xSize + (y - 1) * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(0, -1, 0);
-						v.pos = Position((float)x, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, -1, 0);
-						v.pos = Position((float)x + 1, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, -1, 0);
-						v.pos = Position((float)x, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, -1, 0);
-						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 2);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index += 4;
-					}
-					if (y == ySize - 1 || (*chunk)[x + z * xSize + (y + 1) * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(0, 1, 0);
-						v.pos = Position((float)x, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 1, 0);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 1, 0);
-						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 1, 0);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 2);
-						index_buffer_data.push_back(index + 3);
-						index += 4;
-					}
-
-					if (z == 0 || (*chunk)[x + (z - 1) * xSize + y * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(0, 0, -1);
-						v.pos = Position((float)x, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, -1);
-						v.pos = Position((float)x + 1, (float)y, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, -1);
-						v.pos = Position((float)x, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, -1);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 2);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 0);
-						index += 4;
-					}
-					if (z == zSize - 1 || (*chunk)[x + (z + 1) * xSize + y * xSize*zSize] == 0)
-					{
-						Vertex v;
-						v.normal.Set(0, 0, 1);
-						v.pos = Position((float)x, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, 1);
-						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, 1);
-						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
-						vertex_buffer_data.push_back(v);
-						v.normal.Set(0, 0, 1);
-						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
-						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
-						vertex_buffer_data.push_back(v);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 1);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 0);
-						index_buffer_data.push_back(index + 3);
-						index_buffer_data.push_back(index + 2);
-						index += 4;
-					}
-				}
-			}
-		}
-	}
-
-	Mesh* mesh;
-
-	if (!biomed)
-		mesh = new Mesh(meshName);
-	else
-		mesh = new MeshBiomed(meshName);
-
-	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->indexBuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_buffer_data.size() * sizeof(GLuint), &index_buffer_data[0], GL_STATIC_DRAW);
-
-	mesh->indexSize = index_buffer_data.size();
-	mesh->mode = Mesh::DRAW_TRIANGLES;
-	return mesh;
-}
+////@author Nam Kai Zhe
+//Mesh * MeshBuilder::GenerateChunk(const std::string & meshName, int xSize, int ySize, int zSize, std::vector<unsigned short>* chunk, bool biomed)
+//{
+//	xSize *= 16;
+//	zSize *= 16;
+//	Vertex v;
+//	std::vector<Vertex> vertex_buffer_data;
+//	std::vector<GLuint> index_buffer_data;
+//	int index = 0;
+//	for (int x = 0; x < xSize; x++)
+//	{
+//		for (int z = 0; z < zSize; z++)
+//		{
+//			for (int y = 0; y < ySize; y++)
+//			{
+//				if ((*chunk)[x + z * xSize + y * xSize*zSize] != 0)
+//				{
+//					if (x == 0 || (*chunk)[x - 1 + z * xSize + y * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(-1, 0, 0);
+//						v.pos = Position((float)x, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(-1, 0, 0);
+//						v.pos = Position((float)x, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(-1, 0, 0);
+//						v.pos = Position((float)x, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(-1, 0, 0);
+//						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 2);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 0);
+//						index += 4;
+//					}
+//					if (x == xSize - 1 || (*chunk)[x + 1 + z * xSize + y * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(1, 0, 0);
+//						v.pos = Position((float)x + 1, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(1, 0, 0);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(1, 0, 0);
+//						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(1, 0, 0);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 2);
+//						index += 4;
+//					}
+//					if (y == 0 || (*chunk)[x + z * xSize + (y - 1) * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(0, -1, 0);
+//						v.pos = Position((float)x, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, -1, 0);
+//						v.pos = Position((float)x + 1, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, -1, 0);
+//						v.pos = Position((float)x, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, -1, 0);
+//						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 2);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index += 4;
+//					}
+//					if (y == ySize - 1 || (*chunk)[x + z * xSize + (y + 1) * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(0, 1, 0);
+//						v.pos = Position((float)x, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 1, 0);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 1, 0);
+//						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 1, 0);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 2);
+//						index_buffer_data.push_back(index + 3);
+//						index += 4;
+//					}
+//
+//					if (z == 0 || (*chunk)[x + (z - 1) * xSize + y * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(0, 0, -1);
+//						v.pos = Position((float)x, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, -1);
+//						v.pos = Position((float)x + 1, (float)y, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, -1);
+//						v.pos = Position((float)x, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, -1);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 2);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 0);
+//						index += 4;
+//					}
+//					if (z == zSize - 1 || (*chunk)[x + (z + 1) * xSize + y * xSize*zSize] == 0)
+//					{
+//						Vertex v;
+//						v.normal.Set(0, 0, 1);
+//						v.pos = Position((float)x, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, 1);
+//						v.pos = Position((float)x + 1, (float)y, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 1);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, 1);
+//						v.pos = Position((float)x, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 0, 0);
+//						vertex_buffer_data.push_back(v);
+//						v.normal.Set(0, 0, 1);
+//						v.pos = Position((float)x + 1, (float)y + 1, (float)z + 1);
+//						v.texCoord = GenTexCoord((*chunk)[x + z * xSize + y * xSize*zSize], 16, 1, 0);
+//						vertex_buffer_data.push_back(v);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 1);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 0);
+//						index_buffer_data.push_back(index + 3);
+//						index_buffer_data.push_back(index + 2);
+//						index += 4;
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//	Mesh* mesh;
+//
+//	if (!biomed)
+//		mesh = new Mesh(meshName);
+//	else
+//		mesh = new MeshBiomed(meshName);
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, mesh->vertexBuffer);
+//	glBufferData(GL_ARRAY_BUFFER, vertex_buffer_data.size() * sizeof(Vertex), &vertex_buffer_data[0], GL_STATIC_DRAW);
+//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->indexBuffer);
+//	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_buffer_data.size() * sizeof(GLuint), &index_buffer_data[0], GL_STATIC_DRAW);
+//
+//	mesh->indexSize = index_buffer_data.size();
+//	mesh->mode = Mesh::DRAW_TRIANGLES;
+//	return mesh;
+//}

@@ -14,7 +14,6 @@ public:
 		SQUARE,
 		BOX_NOT_IMPLEMENTED,
 		PADDLE,
-		CHUNK,
 		TOTAL,
 	};
 private:

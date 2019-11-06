@@ -4,6 +4,7 @@ Scene::Scene()
 {
 	m_bCursorEnabled = false;
 	m_Player = nullptr;
+	m_CameraGO = nullptr;
 }
 
 Scene::~Scene()
@@ -34,7 +35,7 @@ GameObject* Scene::GetGO(std::string s)
 {
 	return DataContainer::GetInstance()->GetGameObject(s);
 }
-GameObject * Scene::GetPlayer()
+GameObject* Scene::GetPlayer()
 {
 	return m_Player;
 }

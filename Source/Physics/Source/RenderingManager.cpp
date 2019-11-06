@@ -1,8 +1,7 @@
 #include "RenderingManager.h"
 #include "Application.h"
 #include "RenderComponent.h"
-#include "EntityScript.h"
-#include "PlayerScript.h"
+#include "Time.h"
 
 #define VIEW_AS_LIGHT false
 #define SHADOW_VIEW_SIZE_X 400
@@ -65,7 +64,7 @@ void RenderingManager::Update(double dt)
 void RenderingManager::Render(Scene* scene)
 {
 	// CHENG_LOG("Tex: ", std::to_string(Post.GetTexture()));
-	if (!scene->GetCameraGameObject()->GetComponent<TransformComponent>())
+	if (!scene->GetCameraGameObject())
 	{
 		DEFAULT_LOG("ERROR: NO CAMERA GAMEOBJECT");
 		return;
@@ -118,18 +117,9 @@ void RenderingManager::RenderPassPost(Scene* scene)
 	oof = glGetError();
 	glUseProgram(m_PostProcessProgram);
 	// BindUniforms();
-	if (scene->GetPlayer())
-	{
-		glUniform1f(m_parameters[U_EFFECT0_INTENSITY], (((float)(scene->GetPlayer()->GetComponent<EntityScript>()->GetValues()->GetHealth()) / (float)(scene->GetPlayer()->GetComponent<EntityScript>()->GetBaseStats()->GetMaxHealth()))));
-		oof = glGetError();
-		glUniform1f(m_parameters[U_EFFECT1_INTENSITY], SceneManager::GetInstance()->GetScene()->GetPlayer()->GetComponent<PlayerScript>()->GetTimeDead() - 1);
-	}
 	glUniform1f(m_parameters[U_EFFECT1_TIME], Time::GetInstance()->GetElapsedTimeF());
 
 	std::stringstream k;
-	if (scene->GetPlayer())
-		k << (((float)(scene->GetPlayer()->GetComponent<EntityScript>()->GetValues()->GetHealth()) / (float)(scene->GetPlayer()->GetComponent<EntityScript>()->GetBaseStats()->GetMaxHealth())));
-	KZ_LOG("Intensity: ", k.str());
 	oof = glGetError();
 	glBindRenderbuffer(GL_RENDERBUFFER, m_PostBO);
 	oof = glGetError();
@@ -158,8 +148,6 @@ void RenderingManager::RenderPassPost2(Scene* scene)
 
 	glUseProgram(m_PostProcessProgram2);
 	glUniform1f(m_parameters[U_EFFECT2_TIME], Time::GetInstance()->GetElapsedTimeF());
-	if (SceneManager::GetInstance()->GetScene()->GetPlayer())
-		glUniform1f(m_parameters[U_EFFECT2_INTENSITY], SceneManager::GetInstance()->GetScene()->GetPlayer()->GetComponent<PlayerScript>()->GetTimeDead());
 
 	glBindRenderbuffer(GL_RENDERBUFFER, m_PostBO2);
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, Application::GetInstance().GetWindowWidth(), Application::GetInstance().GetWindowHeight());
@@ -431,10 +419,9 @@ void RenderingManager::RenderGameObject(GameObject* go, Vector3 vCamPos, bool bI
 			if ((go->TRANS->GetPosition() - SceneManager::GetInstance()->GetScene()->GetPlayer()->TRANS->GetPosition()).LengthSquared() > go->RENDER->GetRenderDistance()* go->RENDER->GetRenderDistance()) return;
 		}
 		Mesh* CurrentMesh = renderComponent->GetMesh();
-		Mesh* MeshBiomed = renderComponent->GetMeshBiomed();
 		AnimatedMesh* AnimatedMesh = renderComponent->GetAnimatedMesh();
 
-		if (!CurrentMesh && !AnimatedMesh && !MeshBiomed)
+		if (!CurrentMesh && !AnimatedMesh)
 		{
 			DEFAULT_LOG("Mesh not initialised");
 			return;
@@ -500,9 +487,6 @@ void RenderingManager::RenderGameObject(GameObject* go, Vector3 vCamPos, bool bI
 
 			else if (AnimatedMesh)
 				RenderAnimatedMesh(renderComponent, go->GetComponent<RenderComponent>()->GetLightEnabled());
-
-			else if (MeshBiomed)
-				RenderBiomedMesh(renderComponent, go->GetComponent<BiomeComponent>(), go->GetComponent<RenderComponent>()->GetLightEnabled());
 		}
 		else
 		{

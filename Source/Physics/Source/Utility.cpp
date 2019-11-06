@@ -34,18 +34,6 @@ Locator::eLoggerUsers StringToUser(std::string s)
 	{
 		return Locator::CHENG;
 	}
-	else if (s == "KZ")
-	{
-		return Locator::KZ;
-	}
-	else if (s == "RYAN")
-	{
-		return Locator::RYAN;
-	}
-	else if (s == "LZ")
-	{
-		return Locator::LZ;
-	}
 	else if (s == "ALL")
 	{
 		return Locator::ALL;
@@ -83,7 +71,7 @@ std::string vtos(Vector3& v)
 	out += " }";
 	return out;
 }
-float AngleBetween(const Vector3 &a, const Vector3 &b)
+float AngleBetween(const Vector3& a, const Vector3& b)
 {
 	float num = a.Dot(b);
 	float den = a.Length() * b.Length();

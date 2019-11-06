@@ -10,9 +10,6 @@
 
 #define CHENG_LOG(...)			Locator::ChengLogger LOG(__VA_ARGS__)
 #define DEFAULT_LOG(...)		Locator::DefaultLogger LOG(__VA_ARGS__)
-#define RYAN_LOG(...)			Locator::RyanLogger LOG(__VA_ARGS__)
-#define KZ_LOG(...)				Locator::KZLogger LOG(__VA_ARGS__)
-#define LZ_LOG(...)				Locator::LZLogger LOG(__VA_ARGS__)
 
 class Locator
 {
@@ -21,18 +18,12 @@ public:
 	{
 		DEFAULT,
 		CHENG,
-		RYAN,
-		KZ,
-		LZ,
 		ALL,
 	};
 private:
 public:
 	static Logger DefaultLogger;
 	static Logger ChengLogger;
-	static Logger RyanLogger;
-	static Logger KZLogger;
-	static Logger LZLogger;
 	Locator();
 	~Locator();
 

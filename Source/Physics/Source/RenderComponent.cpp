@@ -5,7 +5,7 @@ RenderComponent::RenderComponent()
 	m_Mesh = nullptr;
 	m_fRenderDistance = 32;
 	m_AnimatedMesh = nullptr;
-	m_MeshBiomed = nullptr;
+
 	m_bLightEnabled = true;
 	m_bBillboard = false;
 	m_b3DBillboard = false;
@@ -18,32 +18,21 @@ RenderComponent::RenderComponent(Mesh* Mesh)
 {
 	m_fRenderDistance = 32;
 	m_AnimatedMesh = nullptr;
-	m_MeshBiomed = nullptr;
+
 	m_bLightEnabled = true;
 	m_bBillboard = false;
 	m_b3DBillboard = false;
 	m_bIsText = false;
 	m_bTextOnScreen = false;
 }
-RenderComponent::RenderComponent(MeshBiomed * meshBiomed)
-	:m_MeshBiomed(meshBiomed)
-{
-	m_fRenderDistance = 48;
-	m_Mesh = nullptr;
-	m_AnimatedMesh = nullptr;
-	m_bLightEnabled = true;
-	m_bBillboard = false;
-	m_b3DBillboard = false;
-	m_bIsText = false;
-	m_bTextOnScreen = false;
-}
+
 RenderComponent::RenderComponent(Mesh* Mesh, std::string sText, bool OnScreen)
 	:m_Mesh(Mesh)
 {
 	m_fRenderDistance = -1;
 	m_sText = sText;
 	m_AnimatedMesh = nullptr;
-	m_MeshBiomed = nullptr;
+
 	m_bLightEnabled = false;
 	m_bBillboard = false;
 	m_b3DBillboard = false;
@@ -57,7 +46,6 @@ RenderComponent::RenderComponent(AnimatedMesh* Mesh)
 {
 	m_fRenderDistance = 32;
 	m_Mesh = nullptr;
-	m_MeshBiomed = nullptr;
 
 	m_bLightEnabled = false;	// Transparency doesn't work with light enabled
 	m_bBillboard = false;
@@ -76,11 +64,6 @@ RenderComponent::RenderComponent(RenderComponent& ref)
 		m_AnimatedMesh = new AnimatedMesh(*ref.m_AnimatedMesh);
 	else
 		m_AnimatedMesh = nullptr;
-
-	if (ref.m_MeshBiomed)
-		m_MeshBiomed = new MeshBiomed(*ref.m_MeshBiomed);
-	else
-		m_MeshBiomed = nullptr;
 
 	m_bLightEnabled = ref.m_bLightEnabled;
 	m_bBillboard = ref.m_bBillboard;
@@ -106,18 +89,11 @@ RenderComponent::~RenderComponent()
 {
 	if (m_AnimatedMesh)
 		delete m_AnimatedMesh;
-	if (m_MeshBiomed)
-		delete m_MeshBiomed;
 }
 
 Mesh* RenderComponent::GetMesh()
 {
 	return m_Mesh;
-}
-
-MeshBiomed * RenderComponent::GetMeshBiomed()
-{
-	return m_MeshBiomed;
 }
 
 AnimatedMesh* RenderComponent::GetAnimatedMesh()
@@ -212,10 +188,6 @@ void RenderComponent::RemoveText()
 {
 	if (m_sText.size() > 0)
 		m_sText = m_sText.substr(0, m_sText.size() - 1);
-}
-void RenderComponent::DeleteMeshBiomed()
-{
-	delete m_MeshBiomed;
 }
 void RenderComponent::SetAlpha(float a)
 {

@@ -7,9 +7,6 @@
 #include "Camera.h"
 #include "CameraComponent.h"
 #include "LightManager.h"
-#include "TransformComponent.h"
-#include "Rigidbody.h"
-#include "Constrain.h"
 
 class Scene
 {

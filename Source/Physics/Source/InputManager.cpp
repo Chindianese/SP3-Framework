@@ -23,7 +23,7 @@ InputManager::~InputManager()
 	{
 		for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
 		{
-			delete *it2;
+			delete* it2;
 		}
 	}
 }
@@ -47,14 +47,12 @@ void InputManager::LoadBindings(std::string fileName)
 	}
 	else
 	{
-		KZ_LOG("Tried to load keybinds from nonexistent file (\"" + fileName + "\"");
+		DEFAULT_LOG("Tried to load keybinds from nonexistent file (\"" + fileName + "\"");
 	}
 }
 void InputManager::ExportBindings(std::string fileName)
 {
-
 }
 void InputManager::AddBinding(std::string bindName, InputBinding* bind)
 {
-
 }

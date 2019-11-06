@@ -11,7 +11,6 @@
 #include "GameObject.h"
 #include <vector>
 #include "Mesh.h"
-#include "MeshBiomed.h"
 #include "Scene.h"
 
 #include "shader.hpp"
@@ -136,9 +135,9 @@ protected:
 	void RenderText(RenderComponent* mesh);
 	void RenderTextOnScreen(RenderComponent* rc, std::string text, Color color, float size, float x, float y, int align = 0);
 	void RenderUI(RenderComponent* mesh, bool enableLight);
-	void RenderMesh(RenderComponent *mesh, bool enableLight);
-	void RenderBiomedMesh(RenderComponent*mesh, BiomeComponent *bc, bool enableLight);
-	void RenderAnimatedMesh(RenderComponent *mesh, bool enableLight);
+	void RenderMesh(RenderComponent* mesh, bool enableLight);
+	//void RenderBiomedMesh(RenderComponent*mesh, BiomeComponent *bc, bool enableLight);
+	void RenderAnimatedMesh(RenderComponent* mesh, bool enableLight);
 	void BindUniforms();
 	void SetUniforms(Scene* scene);
 	void BindLightUniforms();
