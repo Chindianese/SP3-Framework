@@ -287,3 +287,9 @@ Source/Release
 Physics/Content/textures/LOW/plain_tree\.psd
 Physics/Content/textures/LOW/snow_tree\.psd
 /docs.dxg
+common/debug/*.obj
+source/common/debug/*.obj
+source/debug/physics/content/savedata
+source/common/debug/*.exp
+source/common/debug/*.lib
+source/physics/debug/*.obj

@@ -77,8 +77,8 @@ void RenderingManager::Render(Scene* scene)
 	//************************************
 	RenderPassMain(scene);
 	RenderQueued(scene);
-	RenderPassPost(scene);
-	RenderPassPost2(scene);
+	//RenderPassPost(scene);
+	//RenderPassPost2(scene);
 }
 void RenderingManager::Resize(Vector3 size)
 {
@@ -109,7 +109,7 @@ void RenderingManager::RenderPassGPass(Scene* scene)
 		0, 1, 0);
 	RenderWorld(scene);
 }
-void RenderingManager::RenderPassPost(Scene * scene)
+void RenderingManager::RenderPassPost(Scene* scene)
 {
 	// glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	m_renderPass = RENDER_PASS_POST;
@@ -180,8 +180,8 @@ void RenderingManager::RenderPassPost2(Scene* scene)
 void RenderingManager::RenderPassMain(Scene* scene)
 {
 	m_renderPass = RENDER_PASS_MAIN;
-	Post.BindForWriting();
-	// glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	glViewport(0, 0, Application::GetWindowWidth(),
 		Application::GetWindowHeight());
 	glEnable(GL_CULL_FACE);
@@ -428,7 +428,7 @@ void RenderingManager::RenderGameObject(GameObject* go, Vector3 vCamPos, bool bI
 			return;
 		if (go->RENDER->GetRenderDistance() > 0 && SceneManager::GetInstance()->GetScene()->GetPlayer())
 		{
-			if ((go->TRANS->GetPosition() - SceneManager::GetInstance()->GetScene()->GetPlayer()->TRANS->GetPosition()).LengthSquared() > go->RENDER->GetRenderDistance() * go->RENDER->GetRenderDistance()) return;
+			if ((go->TRANS->GetPosition() - SceneManager::GetInstance()->GetScene()->GetPlayer()->TRANS->GetPosition()).LengthSquared() > go->RENDER->GetRenderDistance()* go->RENDER->GetRenderDistance()) return;
 		}
 		Mesh* CurrentMesh = renderComponent->GetMesh();
 		Mesh* MeshBiomed = renderComponent->GetMeshBiomed();
