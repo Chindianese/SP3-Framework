@@ -7,6 +7,7 @@
 #include "Utility.h"
 #include "UIButtonComponent.h"
 #include "InputScript.h"
+#include "MessageObserver.h"
 DefaultScene::DefaultScene()
 {
 }
@@ -21,6 +22,8 @@ void DefaultScene::Init()
 	GameObject* go = nullptr;
 	GameObject* go2 = nullptr;
 	/// Observers================================================================================
+	GenericSubject::GetInstance()->AddObserver(new MessageObserver);
+	GenericSubject::GetInstance()->NotifySubject(nullptr, "INIT_CLIENT");
 	/// EndObservers================================================================================
 	/// Layers================================================================================
 	/// End Layers================================================================================

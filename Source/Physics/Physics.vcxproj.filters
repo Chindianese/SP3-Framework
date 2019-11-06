@@ -179,6 +179,7 @@
     </ClCompile>
     <ClCompile Include="source\ClientSystem.cpp" />
     <ClCompile Include="source\InputScript.cpp" />
+    <ClCompile Include="source\MessageObserver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h">
@@ -375,5 +376,6 @@
     </ClInclude>
     <ClInclude Include="source\ClientSystem.h" />
     <ClInclude Include="source\InputScript.h" />
+    <ClInclude Include="source\MessageObserver.h" />
   </ItemGroup>
 </Project>
