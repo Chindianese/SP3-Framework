@@ -16,7 +16,7 @@
 // Start Scene
 #include "DefaultScene.h"
 RenderingManager* Engine::m_Renderer;
-#define TIMINGS false
+#define TIMINGS true
 
 #define SCENE DefaultScene
 
@@ -94,7 +94,7 @@ void Engine::Update(double dt)
 	GameObjectManager* GOM = CurrentScene->GetGameObjectManager();
 	std::vector<GameObject*> GOObserverList;
 	std::map<std::string, LayerData*>::iterator it;
-	int counter = 0;
+	//int counter = 0;
 	for (it = GOM->GetLayerList()->begin(); it != GOM->GetLayerList()->end(); it++)
 	{
 		// it->first == key
@@ -118,7 +118,7 @@ void Engine::Update(double dt)
 					CHENG_LOG("GO update longer than 0.01s: ", STOP_S);
 			}
 			CheckGOForObserver(go, &GOObserverList);
-			counter++;
+			//counter++;
 		}
 	}
 	if (TIMINGS)

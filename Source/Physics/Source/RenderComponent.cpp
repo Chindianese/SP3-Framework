@@ -3,7 +3,7 @@
 RenderComponent::RenderComponent()
 {
 	m_Mesh = nullptr;
-	m_fRenderDistance = 32;
+	m_fRenderDistance = -1;
 	m_AnimatedMesh = nullptr;
 
 	m_bLightEnabled = true;
@@ -16,7 +16,7 @@ RenderComponent::RenderComponent()
 RenderComponent::RenderComponent(Mesh* Mesh)
 	:m_Mesh(Mesh)
 {
-	m_fRenderDistance = 32;
+	m_fRenderDistance = -1;
 	m_AnimatedMesh = nullptr;
 
 	m_bLightEnabled = true;
@@ -44,7 +44,7 @@ RenderComponent::RenderComponent(Mesh* Mesh, std::string sText, bool OnScreen)
 RenderComponent::RenderComponent(AnimatedMesh* Mesh)
 	: m_AnimatedMesh(Mesh)
 {
-	m_fRenderDistance = 32;
+	m_fRenderDistance = -1;
 	m_Mesh = nullptr;
 
 	m_bLightEnabled = false;	// Transparency doesn't work with light enabled

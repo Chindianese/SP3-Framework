@@ -75,7 +75,7 @@ void DataContainer::InitGO()
 	GameObject* go2 = nullptr;
 	go = new GameObject;
 	m_map_GO["fps"] = go;
-	go->AddComponent(new RenderComponent(GetMesh("Text"), ""));
+	go->AddComponent(new RenderComponent(GetMesh("Text"), "0"));
 	go->AddComponent(new FPSScript);
 }
 void  DataContainer::InitShaders()

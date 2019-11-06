@@ -25,13 +25,12 @@ void FPSScript::Update(double dt)
 		m_fLastUpdate = Time::GetInstance()->GetElapsedTimeF();
 		m_rc = RENDER;
 		float fps = m_iNumFrames / duration;
+		// fps = 1 / dt;
 		fps = roundf(fps);
 		std::stringstream ss;
 		ss.precision(2);
 		ss << fps;
 		m_rc->SetText(ss.str());
-		// m_rc->SetText(std::to_string(1 / dt));
 		m_iNumFrames = 0;
-		// CHENG_LOG("TIME: " + ss.str());
 	}
 }

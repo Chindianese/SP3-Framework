@@ -71,7 +71,7 @@ void RenderingManager::Render(Scene* scene)
 	}
 	//******************************* PRE RENDER PASS
 	//*************************************
-	RenderPassGPass(scene);
+	// RenderPassGPass(scene);
 	//******************************* MAIN RENDER PASS
 	//************************************
 	RenderPassMain(scene);
@@ -81,8 +81,6 @@ void RenderingManager::Render(Scene* scene)
 }
 void RenderingManager::Resize(Vector3 size)
 {
-	Post.Init((unsigned)size.x, (unsigned)size.y);
-	Post2.Init((unsigned)size.x, (unsigned)size.y);
 }
 void RenderingManager::RenderPassGPass(Scene* scene)
 {
@@ -292,10 +290,6 @@ void RenderingManager::RenderWorld(Scene* scene)
 		if (it->first == "UI")
 			continue;
 		if (it->first == "Particles")
-			continue;
-		if (it->first == "Post")
-			continue;
-		if (it->first == "Post2")
 			continue;
 		if (SWITCH_SHADER && m_renderPass == RENDER_PASS_MAIN)
 		{
