@@ -194,9 +194,6 @@ void RenderingManagerBase::Init()
 	// Main Shader--------------------------------------------------------------------------------
 	m_programID = DataContainer::GetInstance()->GetShader("Default");
 
-	m_PostProcessProgram = DataContainer::GetInstance()->GetShader("Post");
-	m_PostProcessProgram2 = DataContainer::GetInstance()->GetShader("EffectCRT");
-
 	// Shadows
 	m_lightDepthFBO.Init(2048, 2048);
 

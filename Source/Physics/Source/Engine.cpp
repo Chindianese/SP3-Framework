@@ -36,7 +36,8 @@ void Engine::Init()
 	Math::InitRNG();
 	DataContainer::GetInstance()->Init();
 	AudioManager* audio = AudioManager::GetInstance();
-	audio->Play3D("pop.wav", {});
+	audio->SetBGMVolume(0);
+	audio->Play3D("pop.wav", { 100,100,100 });
 	m_frameCount = 0;
 	m_Renderer->Init();
 	// Init first scene

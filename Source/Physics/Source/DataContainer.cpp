@@ -62,8 +62,6 @@ void DataContainer::InitMeshes()
 	m_map_Meshes["Quad"] = MeshBuilder::GenerateQuadLeftCentered({}, 1);
 
 	m_map_Meshes["QuadCentered"] = MeshBuilder::GenerateQuad("QuadCentered", {}, 1);
-
-	m_map_Meshes["particlequad"] = MeshBuilder::GenerateQuad("particlequad", {}, 1.f)->AddTexture("particleSquareBorder");
 }
 void DataContainer::InitTerrain()
 {
@@ -85,12 +83,7 @@ void  DataContainer::InitShaders()
 	m_map_Shaders["Default"] = LoadShaders("Default", "FancyFog");
 	m_map_Shaders["Particles"] = LoadShaders("Default", "FancyFog");
 	m_map_Shaders["GPass"] = LoadShaders("GPass", "GPass");
-	m_map_Shaders["Post"] = LoadShaders("Post", "Post");
-	m_map_Shaders["EffectCRT"] = LoadShaders("Post", "EffectCRT");
 	m_map_Shaders["UI"] = LoadShaders("Default", "Default");
-	m_map_Shaders["Particles"] = LoadShaders("Default", "Default");
-	m_map_Shaders["PassThrough"] = LoadShaders("PassThrough", "PassThrough");
-	m_map_Shaders["Grass"] = LoadShaders("Grass", "FancyFog");
 }
 DataContainer::~DataContainer()
 {

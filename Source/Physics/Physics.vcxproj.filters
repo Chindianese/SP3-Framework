@@ -102,9 +102,6 @@
     <ClCompile Include="Source\Mesh.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\MeshBiomed.cpp">
-      <Filter>source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\MeshBuilder.cpp">
       <Filter>source</Filter>
     </ClCompile>
