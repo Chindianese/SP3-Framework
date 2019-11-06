@@ -37,8 +37,8 @@ void DefaultScene::Init()
 	go->RENDER->SetColor({ 0.4f,1.f,0.8f });
 	// Title--------------------------------------------------------------------------------
 	go = m_GOM.AddGameObject("UI");
-	go->TRANS->SetPosition(1920 / 2 + 200, 10, 120);
-	go->AddComponent(new RenderComponent(dataContainer->GetMesh("Text"), "SUSUcubed"));
+	go->TRANS->SetPosition(350, 1080 - 150, 120);
+	go->AddComponent(new RenderComponent(dataContainer->GetMesh("Text"), "messaging"));
 	go->RENDER->SetColor({ 0.4f,1.f,0.8f });
 	// go->SetDisableDistance(-1);
 	/// Create Camera================================================================================
