@@ -20,7 +20,6 @@ private:
 	float m_fCamDist;
 	static bool m_bIsTopDown;
 	//----------------------------------
-	void Rotate();
 public:
 	CameraScript(GameObject* vTarget);
 	virtual ~CameraScript();
@@ -33,6 +32,4 @@ public:
 	static Vector3 GetRight();
 	static Vector3 GetOffset();
 	static Vector3 GetRotateOffset();
-
-	static void SetTopDown(bool b);
 };
