@@ -177,6 +177,7 @@
     <ClCompile Include="Source\WorldValues.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\ClientSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h">
@@ -371,5 +372,6 @@
     <ClInclude Include="Source\WorldValues.h">
       <Filter>source</Filter>
     </ClInclude>
+    <ClInclude Include="source\ClientSystem.h" />
   </ItemGroup>
 </Project>

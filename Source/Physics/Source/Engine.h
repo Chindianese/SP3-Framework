@@ -13,6 +13,7 @@
 #include "CollisionManager.h"
 #include "RenderingManagerBase.h"
 #include <vector>
+#include "ClientSystem.h"
 
 //#define LOG_UPDATE_RATE 1
 
@@ -33,6 +34,7 @@ private:
 	CollisionManager m_CollisionManager;
 	void CheckGOForObserver(GameObject* go, std::vector<GameObject*>* GOList);
 	unsigned int m_frameCount;
+	ClientSystem m_clientSystem;
 public:
 	RenderingManagerBase* GetRenderManager();
 };

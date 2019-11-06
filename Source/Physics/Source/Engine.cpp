@@ -16,7 +16,7 @@
 // Start Scene
 #include "DefaultScene.h"
 RenderingManager* Engine::m_Renderer;
-#define TIMINGS true
+#define TIMINGS false
 
 #define SCENE DefaultScene
 
@@ -74,6 +74,8 @@ void Engine::Init()
 		MoveWindow(hwnd, (int)ConsolePos.x, (int)ConsolePos.y
 			, (int)ConsoleSize.x, (int)ConsoleSize.y, TRUE);
 	}
+
+	m_clientSystem.Init();
 }
 void Engine::SetMouseCallback(GLFWwindow* window)
 {
@@ -135,6 +137,7 @@ void Engine::Update(double dt)
 	GenericSubject::GetInstance()->NotifyObservers(&GOObserverList);
 	// Remove to be destroyed--------------------------------------------------------------------------------
 	GOM->DestroyQueued();
+	m_clientSystem.Update();
 	//--------------------------------------------------------------------------------
 	m_Renderer->Update(dt);
 	m_Renderer->Render(CurrentScene);

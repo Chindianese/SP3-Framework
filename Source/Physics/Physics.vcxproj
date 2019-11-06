@@ -26,6 +26,7 @@
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\CameraComponent.cpp" />
     <ClCompile Include="Source\CameraScript.cpp" />
+    <ClCompile Include="source\ClientSystem.cpp" />
     <ClCompile Include="Source\CollisionManager.cpp" />
     <ClCompile Include="Source\ColorFBO.cpp" />
     <ClCompile Include="Source\Component.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\CameraComponent.h" />
     <ClInclude Include="Source\CameraScript.h" />
+    <ClInclude Include="source\ClientSystem.h" />
     <ClInclude Include="Source\CollisionManager.h" />
     <ClInclude Include="Source\ColorFBO.h" />
     <ClInclude Include="Source\Component.h" />
