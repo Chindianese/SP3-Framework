@@ -77,6 +77,9 @@ void DataContainer::InitGO()
 	m_map_GO["fps"] = go;
 	go->AddComponent(new RenderComponent(GetMesh("Text"), "0"));
 	go->AddComponent(new FPSScript);
+
+	go = AddGO("message");
+	go->AddComponent(new RenderComponent(GetMesh("Text"), "", true));
 }
 void  DataContainer::InitShaders()
 {
@@ -84,6 +87,13 @@ void  DataContainer::InitShaders()
 	m_map_Shaders["Particles"] = LoadShaders("Default", "FancyFog");
 	m_map_Shaders["GPass"] = LoadShaders("GPass", "GPass");
 	m_map_Shaders["UI"] = LoadShaders("Default", "Default");
+}
+GameObject* DataContainer::AddGO(std::string name)
+{
+	// TODO: check to existing key
+	GameObject* go = new GameObject;
+	m_map_GO[name] = go;
+	return go;
 }
 DataContainer::~DataContainer()
 {

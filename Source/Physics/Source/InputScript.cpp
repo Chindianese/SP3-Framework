@@ -21,7 +21,10 @@ void InputScript::Update(double dt)
 	}
 	if (InputManager::GetInstance()->GetInputStrength("Enter"))
 	{
-		this->Notify("SEND:" + this->m_GO->RENDER->GetText());
-		this->m_GO->RENDER->SetText("");
+		if (this->m_GO->RENDER->GetText() != "")
+		{
+			this->Notify("SEND:" + this->m_GO->RENDER->GetText());
+			this->m_GO->RENDER->SetText("");
+		}
 	}
 }

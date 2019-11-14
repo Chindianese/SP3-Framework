@@ -5,6 +5,7 @@
 #include <process.h>
 #include "ClientSystem.h"
 #include "Locator.h"
+#include "GenericSubject.h"
 #pragma comment(lib, "Ws2_32.lib")
 
 ClientSystem::ClientSystem()
@@ -45,7 +46,8 @@ void __cdecl ReadThread(void* param)
 				}
 				//std::cout << buffer << std::endl;
 				std::string message = buffer;
-				DEFAULT_LOG(message);
+				// DEFAULT_LOG(message);
+				GenericSubject::GetInstance()->NotifySubject(nullptr, "RECV:" + message);
 			}
 		}
 	}

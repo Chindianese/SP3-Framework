@@ -206,7 +206,7 @@ static bool wire = false;
 void RenderingManagerBase::Update(double dt)
 {
 	//Keyboard Section
-	if (InputManager::GetInstance()->GetInputStrength("TriggerCull"))
+	/*if (InputManager::GetInstance()->GetInputStrength("TriggerCull"))
 	{
 		if (cull)
 			glEnable(GL_CULL_FACE);
@@ -221,7 +221,7 @@ void RenderingManagerBase::Update(double dt)
 		else
 			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		wire = !wire;
-	}
+	}*/
 
 	// fps = (float)(1.f / dt);
 	// CHENG_LOG("FPS: ", std::to_string(fps));

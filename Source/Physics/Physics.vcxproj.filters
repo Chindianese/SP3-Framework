@@ -180,6 +180,8 @@
     <ClCompile Include="source\ClientSystem.cpp" />
     <ClCompile Include="source\InputScript.cpp" />
     <ClCompile Include="source\MessageObserver.cpp" />
+    <ClCompile Include="source\MessageSystem.cpp" />
+    <ClCompile Include="source\MessageListComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AnimatedMesh.h">
@@ -377,5 +379,7 @@
     <ClInclude Include="source\ClientSystem.h" />
     <ClInclude Include="source\InputScript.h" />
     <ClInclude Include="source\MessageObserver.h" />
+    <ClInclude Include="source\MessageSystem.h" />
+    <ClInclude Include="source\MessageListComponent.h" />
   </ItemGroup>
 </Project>

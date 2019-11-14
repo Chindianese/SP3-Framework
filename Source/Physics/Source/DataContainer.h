@@ -28,6 +28,7 @@ private:
 	void InitParticles();
 	void InitGO();
 	void InitShaders();
+	GameObject* AddGO(std::string name);
 public:
 	DataContainer();
 	~DataContainer();

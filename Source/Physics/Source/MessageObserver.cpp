@@ -1,5 +1,6 @@
 #include "MessageObserver.h"
-
+#include "Component.h"
+#include "MessageSystem.h"
 MessageObserver::MessageObserver()
 {
 }
@@ -25,7 +26,8 @@ void MessageObserver::Notify(ComponentBase* com, std::string msg, std::vector<Ga
 	if (sub == "RECV")
 	{
 		std::string m = msg.substr(index + 1, msg.size() - 1);
-		clientSystem.Send(m);
-		DEFAULT_LOG(msg);
+		// clientSystem.Send(m);
+		MessageSystem::GetInstance()->ReceiveMessage(m);
+		// DEFAULT_LOG(msg);
 	}
 }

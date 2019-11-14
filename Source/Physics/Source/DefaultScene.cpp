@@ -8,6 +8,8 @@
 #include "UIButtonComponent.h"
 #include "InputScript.h"
 #include "MessageObserver.h"
+#include "MessageListComponent.h"
+#include "MessageSystem.h"
 DefaultScene::DefaultScene()
 {
 }
@@ -62,5 +64,10 @@ void DefaultScene::Init()
 	go->TRANS->SetPosition(200, 10, 120);
 	go->AddComponent(new RenderComponent(dataContainer->GetMesh("Text"), ""));
 	go->AddComponent(new InputScript());
+	//
+	go = AddGO("UI");
+	go->TRANS->SetPosition(0, 0, 0);
+	go->AddComponent(new MessageListComponent(dataContainer->GetGameObject("message")));
+	MessageSystem::GetInstance()->Init(go);
 	///ENDMAIN
 }
